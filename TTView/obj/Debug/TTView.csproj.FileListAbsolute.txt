@@ -1,0 +1,7 @@
+D:\tt\core\TTView\TTView\obj\Debug\TTView.csproj.CoreCompileInputs.cache
+D:\tt\core\TTView\TTView\obj\Debug\TTView.exe
+D:\tt\core\TTView\TTView\obj\Debug\TTView.pdb
+D:\tt\core\TTView.exe
+D:\tt\core\TTView.pdb
+D:\tt\core\TTView\TTView\obj\Debug\TTView.Form1.resources
+D:\tt\core\TTView\TTView\obj\Debug\TTView.csproj.GenerateResource.cache

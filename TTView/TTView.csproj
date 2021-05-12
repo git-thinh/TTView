@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09316810-715E-4706-A2B3-46AABEDA54D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TTView</RootNamespace>
+    <AssemblyName>TTView</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\_Shared\RedisBasic\IRedisBase.cs">
+      <Link>_shared\redis\IRedisBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\RedisBasic\RedisBase.cs">
+      <Link>_shared\redis\RedisBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\RedisBasic\RedisSetting.cs">
+      <Link>_shared\redis\RedisSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\RedisBasic\REDIS_TYPE.cs">
+      <Link>_shared\redis\REDIS_TYPE.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\RedisBasic\ResponseException.cs">
+      <Link>_shared\redis\ResponseException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\_Document\StaticDocument.cs">
+      <Link>_shared\StaticDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\_Document\TesseractModel.cs">
+      <Link>_shared\TesseractModel.cs</Link>
+    </Compile>
+    <Compile Include="App.cs" />
+    <Compile Include="fMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\ControlTransparent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Class1.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Combination.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Hook.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\HotKeys\HotKeyArgs.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\HotKeys\HotKeySet.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\HotKeys\HotKeySetCollection.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\HotKeys\HotKeySetsListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\IKeyboardEvents.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\IKeyboardMouseEvents.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\IMouseEvents.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\AppEventFacade.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\AppKeyListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\AppMouseListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\BaseListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\ButtonSet.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\Callback.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\Chord.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\EventFacade.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\GlobalEventFacade.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\GlobalKeyListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\GlobalMouseListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\KeyboardState.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\KeyListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\KeysExtensions.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\MouseListener.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Implementation\Subscribe.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\KeyCombinationExtensions.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\KeyEventArgsExt.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\KeyPressEventArgsExt.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\MouseEventExtArgs.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\Sequence.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\SequenceBase.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\AppMouseStruct.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\CallbackData.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookHelper.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookIds.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookNativeMethods.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookProcedure.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookProcedureHandle.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HookResult.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\HotkeysNativeMethods.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\KeyboardHookStruct.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\KeyboardNativeMethods.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\Messages.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\MouseNativeMethods.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\MouseStruct.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\Point.cs" />
+    <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\ThreadNativeMethods.cs" />
+    <Compile Include="Lib\System.Linq\DeepCopy.Assign.cs" />
+    <Compile Include="Lib\System.Linq\IsNumber.cs" />
+    <Compile Include="Lib\System.Linq\LinqExt.cs" />
+    <Compile Include="Lib\System.Linq\Lucene.Net.cs" />
+    <Compile Include="Lib\System.Linq\System.Collections.Generic\HashSet.cs" />
+    <Compile Include="Lib\System.Linq\System.Collections.Generic\ISet.cs" />
+    <Compile Include="Lib\System.Linq\System.Data.Linq\MonoTODOAttribute.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Dynamic\System.Linq.Dynamic.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\BinaryExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ConditionalExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ConstantExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ElementInit.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\EmitContext.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Expression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionPrinter.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionTransformer.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionType.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionVisitor.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Expression_T.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Extensions.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\InvocationExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\LambdaExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ListInitExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberAssignment.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberBinding.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberBindingType.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberInitExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberListBinding.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberMemberBinding.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MethodCallExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\NewArrayExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\NewExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ParameterExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\TypeBinaryExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Expressions\UnaryExpression.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq.Ext.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\Check.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\Enumerable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\Grouping.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IGrouping.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\ILookup_T.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IOrderedEnumerable_T.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IOrderedQueryable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IOrderedQueryable_T.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IQueryable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IQueryable_T.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\IQueryProvider.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\Lookup.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\OrderedEnumerable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\OrderedSequence.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\Queryable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\QueryableEnumerable.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\QueryableTransformer.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\QuickSort.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\SortContext.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\SortDirection.cs" />
+    <Compile Include="Lib\System.Linq\System.Linq\SortSequenceContext.cs" />
+    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\DynamicAttribute.cs" />
+    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\ExecutionScope.cs" />
+    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\IStrongBox.cs" />
+    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\StrongBox_T.cs" />
+    <Compile Include="Lib\System.Linq\System\Action.cs" />
+    <Compile Include="Lib\System.Linq\System\Func.cs" />
+    <Compile Include="Lib\System.Linq\Tuple\IStructuralComparable.cs" />
+    <Compile Include="Lib\System.Linq\Tuple\IStructuralEquatable.cs" />
+    <Compile Include="Lib\System.Linq\Tuple\Tuple.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Lib\TabStrip\BaseClasses\BaseStyledPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Lib\TabStrip\Control\FATabStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Lib\TabStrip\Control\FATabStripCloseButton.cs" />
+    <Compile Include="Lib\TabStrip\Control\FATabStripItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Lib\TabStrip\Control\FATabStripItemCollection.cs" />
+    <Compile Include="Lib\TabStrip\Control\FATabStripMenuGlyph.cs" />
+    <Compile Include="Lib\TabStrip\Delegates.cs" />
+    <Compile Include="Lib\TabStrip\Design\FATabStripDesigner.cs" />
+    <Compile Include="Lib\TabStrip\Design\FATabStripItemDesigner.cs" />
+    <Compile Include="Lib\TabStrip\Design\ICaptionSupport.cs" />
+    <Compile Include="Lib\TabStrip\Enums.cs" />
+    <Compile Include="Lib\TabStrip\Helpers\CollectionWithEvents.cs" />
+    <Compile Include="Lib\TabStrip\_CONST_TAB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <Content Include="Lib\Gma.System.MouseKeyHook\HotKeys\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
