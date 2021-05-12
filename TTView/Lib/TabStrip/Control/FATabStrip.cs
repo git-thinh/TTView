@@ -364,7 +364,7 @@ namespace FarsiLibrary.Win
                     Point end = new Point((int)SelectedItem.StripRect.Left - 9, DEF_HEADER_HEIGHT);
                     end.X += (int)SelectedItem.StripRect.Width + 10;
                     //??????????????????????????????????????????????
-                    ///e.Graphics.DrawLine(SystemPens.ControlDark, end, new Point(ClientRectangle.Width, DEF_HEADER_HEIGHT));
+                    //e.Graphics.DrawLine(SystemPens.ControlDark, end, new Point(ClientRectangle.Width, DEF_HEADER_HEIGHT));
                     e.Graphics.DrawLine(SystemPens.ControlDark, new Point(end.X + 3, end.Y), new Point(ClientRectangle.Width - 3, DEF_HEADER_HEIGHT));
                 }
             }

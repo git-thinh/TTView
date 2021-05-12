@@ -39,7 +39,8 @@ namespace TTView
             {
                 Dock = DockStyle.Fill,
                 //AlwaysShowClose = false
-                AlwaysShowMenuGlyph = false
+                //AlwaysShowMenuGlyph = false,
+                BackColor = Color.Gray
             };
             this.Controls.Add(m_tabs);
 
@@ -65,7 +66,7 @@ namespace TTView
             };
             m_tabs.Items.Add(m);
 
-            m_image.MouseMove += f_form_move_MouseDown;
+            m_tabs.MouseMove += f_form_move_MouseDown;
 
 
             // RESIZE
