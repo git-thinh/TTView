@@ -13,11 +13,11 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\</OutputPath>
+    <OutputPath>..\Build64\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,14 +38,50 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LZ4">
+      <HintPath>DLL\LZ4.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <HintPath>DLL\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading">
+      <HintPath>DLL\System.Threading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\_Shared\MMF\FileMapIOException.cs">
+      <Link>_shared\MMF\FileMapIOException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\MMF\MapViewStream.cs">
+      <Link>_shared\MMF\MapViewStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\MMF\MemoryMappedFile.cs">
+      <Link>_shared\MMF\MemoryMappedFile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\MMF\StaticMMF.cs">
+      <Link>_shared\MMF\StaticMMF.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\MMF\Win32APIs.cs">
+      <Link>_shared\MMF\Win32APIs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\MMF\_demo.cs">
+      <Link>_shared\MMF\_demo.cs</Link>
+    </Compile>
     <Compile Include="..\..\_Shared\RedisBasic\IRedisBase.cs">
       <Link>_shared\redis\IRedisBase.cs</Link>
     </Compile>
@@ -61,21 +97,51 @@
     <Compile Include="..\..\_Shared\RedisBasic\ResponseException.cs">
       <Link>_shared\redis\ResponseException.cs</Link>
     </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisContractAttribute.cs">
+      <Link>_shared\Salar.Bois\BoisContractAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisMemberAttribute.cs">
+      <Link>_shared\Salar.Bois\BoisMemberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisMemberInfo.cs">
+      <Link>_shared\Salar.Bois\BoisMemberInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisSerializer.cs">
+      <Link>_shared\Salar.Bois\BoisSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisTypeCache.cs">
+      <Link>_shared\Salar.Bois\BoisTypeCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\BoisTypeInfo.cs">
+      <Link>_shared\Salar.Bois\BoisTypeInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\EnBoisKnownType.cs">
+      <Link>_shared\Salar.Bois\EnBoisKnownType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\EnBoisMemberType.cs">
+      <Link>_shared\Salar.Bois\EnBoisMemberType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\PrimitivesConvertion.cs">
+      <Link>_shared\Salar.Bois\PrimitivesConvertion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\Salar.Bois\ReflectionHelper.cs">
+      <Link>_shared\Salar.Bois\ReflectionHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\_Shared\_Document\StaticDocument.cs">
       <Link>_shared\StaticDocument.cs</Link>
     </Compile>
     <Compile Include="..\..\_Shared\_Document\TesseractModel.cs">
       <Link>_shared\TesseractModel.cs</Link>
     </Compile>
+    <Compile Include="..\..\_Shared\__config.cs">
+      <Link>_shared\__config.cs</Link>
+    </Compile>
+    <Compile Include="..\..\_Shared\__tuple_this.cs">
+      <Link>_shared\__tuple_this.cs</Link>
+    </Compile>
     <Compile Include="App.cs" />
     <Compile Include="fMain.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\ControlTransparent.cs">
       <SubType>Component</SubType>
@@ -128,74 +194,7 @@
     <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\MouseStruct.cs" />
     <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\Point.cs" />
     <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\ThreadNativeMethods.cs" />
-    <Compile Include="Lib\System.Linq\DeepCopy.Assign.cs" />
-    <Compile Include="Lib\System.Linq\IsNumber.cs" />
-    <Compile Include="Lib\System.Linq\LinqExt.cs" />
-    <Compile Include="Lib\System.Linq\Lucene.Net.cs" />
-    <Compile Include="Lib\System.Linq\System.Collections.Generic\HashSet.cs" />
-    <Compile Include="Lib\System.Linq\System.Collections.Generic\ISet.cs" />
-    <Compile Include="Lib\System.Linq\System.Data.Linq\MonoTODOAttribute.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Dynamic\System.Linq.Dynamic.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\BinaryExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ConditionalExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ConstantExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ElementInit.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\EmitContext.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Expression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionPrinter.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionTransformer.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionType.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ExpressionVisitor.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Expression_T.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\Extensions.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\InvocationExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\LambdaExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ListInitExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberAssignment.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberBinding.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberBindingType.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberInitExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberListBinding.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MemberMemberBinding.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\MethodCallExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\NewArrayExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\NewExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\ParameterExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\TypeBinaryExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Expressions\UnaryExpression.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq.Ext.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\Check.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\Enumerable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\Grouping.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IGrouping.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\ILookup_T.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IOrderedEnumerable_T.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IOrderedQueryable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IOrderedQueryable_T.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IQueryable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IQueryable_T.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\IQueryProvider.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\Lookup.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\OrderedEnumerable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\OrderedSequence.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\Queryable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\QueryableEnumerable.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\QueryableTransformer.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\QuickSort.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\SortContext.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\SortDirection.cs" />
-    <Compile Include="Lib\System.Linq\System.Linq\SortSequenceContext.cs" />
-    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\DynamicAttribute.cs" />
-    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\ExecutionScope.cs" />
-    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\ExtensionAttribute.cs" />
-    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\IStrongBox.cs" />
-    <Compile Include="Lib\System.Linq\System.Runtime.CompilerServices\StrongBox_T.cs" />
-    <Compile Include="Lib\System.Linq\System\Action.cs" />
-    <Compile Include="Lib\System.Linq\System\Func.cs" />
-    <Compile Include="Lib\System.Linq\Tuple\IStructuralComparable.cs" />
-    <Compile Include="Lib\System.Linq\Tuple\IStructuralEquatable.cs" />
-    <Compile Include="Lib\System.Linq\Tuple\Tuple.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Lib\TabStrip\BaseClasses\BaseStyledPanel.cs">
       <SubType>Component</SubType>
@@ -218,13 +217,15 @@
     <Compile Include="Lib\TabStrip\_CONST_TAB.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\_Shared\MMF\ReadMe.txt">
+      <Link>_shared\MMF\ReadMe.txt</Link>
+    </Content>
+    <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="DLL\LZ4.dll" />
+    <EmbeddedResource Include="DLL\System.Core.dll" />
+    <None Include="DLL\System.Threading.dll" />
     <Content Include="icon.ico" />
     <Content Include="Lib\Gma.System.MouseKeyHook\HotKeys\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
