@@ -116,6 +116,10 @@ namespace TTView
                 redis = new RedisBase(new RedisSetting(REDIS_TYPE.ONLY_READ, __CONFIG.REDIS_PORT_READ));
 
                 Application.Run(m);
+                app.Top = m.Top;
+                app.Left = m.Left;
+                app.Height = m.Height;
+                app.Width = m.Width;
                 writeSetting(app);
 
                 client.Stop();
@@ -127,7 +131,8 @@ namespace TTView
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-            catch(Exception ex) { 
+            catch(Exception ex) {
+                MessageBox.Show("ERROR: " + ex.Message);
             }
         }
 

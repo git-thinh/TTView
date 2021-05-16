@@ -13,10 +13,11 @@ namespace TTView
 {
     public class fMain : Form, IMain
     {
-        Color __BG = Color.Black;
-        PictureBox m_image;
-
         #region [ MAIN ]
+
+        Color __BG = Color.Black;
+        PictureBox __image;
+        oFile __file;
 
         oApp m_app;
         FATabStrip m_tabs;
@@ -43,8 +44,10 @@ namespace TTView
 
         void main_initUI(object sender, EventArgs e)
         {
-            this.Width = 800;
-            this.Height = 600;
+            this.Top = m_app.Top;
+            this.Left = m_app.Left;
+            this.Width = m_app.Width;
+            this.Height = m_app.Height;
 
             m_tabs = new FATabStrip()
             {
@@ -300,47 +303,6 @@ namespace TTView
 
         /*////////////////////////////////////////////////////////////////////////*/
 
-        #endregion
-
-        oFile _getFile(string file)
-            => m_app.Files.Where(x => x.File == file).Take(1).SingleOrDefault();
-
-        oFile _updateInfoFile(string file, long docId, int pageTotal) {
-            var fi = _getFile(file);
-            if (fi == null)
-            {
-                fi = new oFile() { File = file, PageTotal = pageTotal, Id = docId };
-                m_app.Files.Add(fi);
-            }
-            else {
-                fi.Id = docId;
-                fi.PageTotal = pageTotal;
-            }
-            return fi;
-        }
-
-        public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
-        {
-            if (input == m_app.FileCurrent.File)
-            {
-                var id = data.Get<long>("id");
-                var page_total = data.Get<int>("page_total");
-                var page = data.Get<int>("page");
-                m_message.Text = string.Format("{0}-{1}...", page, page_total);
-
-                if (page == 0)
-                {
-                    m_app.FileCurrent = _updateInfoFile(input, id, page_total);
-                    page_Go(page);
-                }
-
-                if (page == page_total)
-                {
-                    m_message.Text = string.Format("{0}-{1} done", page, page_total);
-                }
-            }
-        }
-
         void toolbar_initUI()
         {
             m_message = new Label()
@@ -358,6 +320,8 @@ namespace TTView
             m_toolbar.Controls.Add(m_message);
             this.Controls.Add(m_toolbar);
         }
+
+        #endregion
 
         void menu_initUI()
         {
@@ -382,6 +346,7 @@ namespace TTView
             setting.DropDownItems.AddRange(new ToolStripItem[] { s1, s2, s3 });
             m_menu.Items.Add(setting);
 
+            m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close", "EXIT"));
             m_tabs.ContextMenuStrip = m_menu;
@@ -409,25 +374,153 @@ namespace TTView
                     m_app.Setting.HideToolbar = menu.Checked;
                     m_toolbar.Visible = !menu.Checked;
                     break;
+                case "RECENT_FILES":
+                    openFormRecentFiles();
+                    break;
                 case "EXIT":
                     this.Close();
                     break;
             }
         }
 
-        void tab_Change() {
+        #region [ TAB OPEN ]
+
+        void openFormRecentFiles()
+        {
+            var main = this;
+            var fm = new Form()
+            {
+                BackColor = __BG,
+                FormBorderStyle = FormBorderStyle.FixedSingle,
+                MinimizeBox = false,
+                MaximizeBox = false,
+                Left = main.Left,
+                Width = main.Width,
+                Height = 500
+            };
+            fm.Shown += (se, ev) => {
+                this.Left = main.Left;
+            };
+            var ls = new ListBox()
+            {
+                Dock = DockStyle.Fill,
+                BorderStyle = BorderStyle.None,
+                Font = new Font("Arial", 15.0f),
+                BackColor = __BG,
+                ForeColor = Color.White
+            };
+            ls.SelectedIndexChanged += (se, ev) =>
+            {
+                if (ls.SelectedIndex == -1) return;
+                var fi = m_app.Files[ls.SelectedIndex];
+                tab_Create(fi.File);
+                fm.Close();
+            };
+            foreach (var fo in m_app.Files) ls.Items.Add(Path.GetFileNameWithoutExtension(fo.File));
+            fm.Controls.Add(ls);            
+            fm.ShowDialog();
+        }
+
+        void openHistory()
+        {
+            if (!string.IsNullOrEmpty(m_app.FileCurrent.File))
+            {
+                __file = m_app.FileCurrent;
+                tab_Create(__file.File);
+            }
+        }
+
+        void openDialog()
+        {
+            using (OpenFileDialog d = new OpenFileDialog())
+            {
+                d.Filter = "pdf files (*.pdf)|*.pdf|TT files (*.tt)|*.tt|All files (*.*)|*.*";
+                d.FilterIndex = 1;
+                d.RestoreDirectory = true;
+                if (d.ShowDialog() == DialogResult.OK) tab_Create(d.FileName);
+            }
+        }
+
+        oFile _getFile(string file)
+            => m_app.Files.Where(x => x.File == file).Take(1).SingleOrDefault();
+
+        oFile _updateInfoFile(string file, long docId, int pageTotal)
+        {
+            var fi = _getFile(file);
+            if (fi == null)
+            {
+                fi = new oFile() { File = file, PageTotal = pageTotal, Id = docId };
+                m_app.Files.Add(fi);
+            }
+            else
+            {
+                fi.Id = docId;
+                fi.PageTotal = pageTotal;
+            }
+            return fi;
+        }
+
+        public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
+        {
+            if (cmd == COMMANDS.PDF_SPLIT_ALL_JPG)
+            {
+                var id = data.Get<long>("id");
+                var page_total = data.Get<int>("page_total");
+                var page = data.Get<int>("page");
+                m_message.Text = string.Format("{0}-{1}...", page, page_total);
+
+                if (page == 0)
+                {
+                    _updateInfoFile(input, id, page_total);
+                    if (m_tabs.Items.Count == 1) page_Go(0);
+                }
+
+                if (page == page_total)
+                {
+                    m_message.Text = string.Format("{0}-{1} done", page, page_total);
+                }
+            }
+        }
+
+        void tab_Change()
+        {
             string file = m_tabs.SelectedItem.Tag as string;
+            var fi = _getFile(file);
+            if (fi != null)
+            {
+                __file = fi;
+                m_app.FileCurrent = fi;
+                __image = m_tabs.SelectedItem.Controls[0].Controls[0] as PictureBox;
+                page_Go();
+            }
         }
 
         void tab_Create(string file)
         {
             var fi = _getFile(file);
-            if (fi == null) {
+            if (fi == null)
+            {
                 fi = new oFile() { File = file };
                 m_app.Files.Add(fi);
             }
 
-            string title = Path.GetFileNameWithoutExtension(file);
+            if (m_tabs.SelectedItem != null && m_tabs.SelectedItem.Tag.ToString() == file) return;
+            if (m_tabs.Items.Count > 0)
+            {
+                for (int i = 0; i < m_tabs.Items.Count; i++)
+                {
+                    if (m_tabs.Items[i].Tag.ToString() == file)
+                    {
+                        m_tabs.SelectedItem = m_tabs.Items[i];
+                        __file = fi;
+                        if (fi.PageTotal == 0) App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
+                        else page_Go();
+                        return;
+                    }
+                }
+            }
+
+            string title = string.Format("{0}-{1}.{2}", fi.PageCurrent + 1, fi.PageTotal, Path.GetFileNameWithoutExtension(file));
 
             var image = new PictureBox()
             {
@@ -457,53 +550,32 @@ namespace TTView
             image.MouseMove += f_form_move_MouseDown;
             m_tabs.Items.Add(tab);
 
-            m_image = image;
-            var requestId = App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
+            if (fi.PageTotal == 0) App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
         }
 
-        void page_Go(int page = 0)
+        void page_Go(int k = 0)
         {
-            if (page > -1 && page < m_app.FileCurrent.PageTotal)
+            int page = __file.PageCurrent + k;
+            if (page > -1 && page < __file.PageTotal)
             {
-                m_app.FileCurrent.PageCurrent = page;
-                var img = App.GetBitmap(m_app.FileCurrent.Id, page);
-                m_image.Image = img;
-            }
-        }
-
-        void openHistory()
-        {
-            if (!string.IsNullOrEmpty(m_app.FileCurrent.File))
-                tab_Create(m_app.FileCurrent.File);
-        }
-
-        void openDialog()
-        {
-            using (OpenFileDialog d = new OpenFileDialog())
-            {
-                d.Filter = "pdf files (*.pdf)|*.pdf|TT files (*.tt)|*.tt|All files (*.*)|*.*";
-                d.FilterIndex = 1;
-                d.RestoreDirectory = true;
-                if (d.ShowDialog() == DialogResult.OK)
+                __file.PageCurrent = page;
+                var img = App.GetBitmap(__file.Id, page);
+                if (__image != null)
                 {
-                    if (d.FileName.EndsWith(".pdf")) openFilePdf(d.FileName);
-                    else if (d.FileName.EndsWith(".tt")) openFileTT(d.FileName);
+                    __image.Image = img;
+                    m_tabs.SelectedItem.Title =
+                        string.Format("{0}-{1}.{2}", page + 1, __file.PageTotal,
+                        Path.GetFileNameWithoutExtension(__file.File));
+
+                    if (m_app.Setting.AutoResize)
+                    {
+                        __image.Width = img.Width;
+                        __image.Height = img.Height;
+                    }
                 }
             }
         }
 
-        void openFilePdf(string file)
-        {
-            m_app.FileCurrent.File = file;
-            m_app.Setting.Directory = Path.GetDirectoryName(file);
-            tab_Create(file);
-        }
-
-        void openFileTT(string file)
-        {
-            m_app.FileCurrent.File = file;
-            m_app.Setting.Directory = Path.GetDirectoryName(file);
-            tab_Create(file);
-        }
+        #endregion
     }
 }

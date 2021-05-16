@@ -31,6 +31,10 @@ namespace TTView
         public oFile FileCurrent { set; get; }
         public List<oFile> Files { set; get; }
         public oSetting Setting { set; get; }
+        public int Top { set; get; }
+        public int Left { set; get; }
+        public int Width { set; get; }
+        public int Height { set; get; }
         public oApp()
         {
             this.FileCurrent = new oFile();
