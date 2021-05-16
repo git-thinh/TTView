@@ -3,6 +3,7 @@ using Gma.System.MouseKeyHook;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,9 +14,10 @@ namespace TTView
 {
     public class fMain : Form, IMain
     {
+        Color __BG = Color.Black;
+        Color __TEXT_COLOR = Color.White;
         #region [ MAIN ]
 
-        Color __BG = Color.Black;
         PictureBox __image;
         oFile __file;
 
@@ -23,7 +25,9 @@ namespace TTView
         FATabStrip m_tabs;
         ContextMenuStrip m_menu;
         Panel m_toolbar;
+
         Label m_message;
+        Label m_size;
 
         const bool m_hook_MouseMove = true;
         Panel m_resize;
@@ -305,9 +309,18 @@ namespace TTView
 
         void toolbar_initUI()
         {
+            m_size = new Label()
+            {
+                AutoSize = false,
+                Width = 99,
+                ForeColor = __TEXT_COLOR,
+                TextAlign = ContentAlignment.MiddleRight,
+                Dock = DockStyle.Right,
+                Text = "0 kb"
+            };
             m_message = new Label()
             {
-                ForeColor = Color.White,
+                ForeColor = __TEXT_COLOR,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Dock = DockStyle.Fill
             };
@@ -317,7 +330,7 @@ namespace TTView
                 Dock = DockStyle.Bottom,
                 Visible = !m_app.Setting.HideToolbar
             };
-            m_toolbar.Controls.Add(m_message);
+            m_toolbar.Controls.AddRange(new Control[] { m_message, m_size });
             this.Controls.Add(m_toolbar);
         }
 
@@ -329,6 +342,7 @@ namespace TTView
         {
             m_menu = new ContextMenuStrip();
             m_menu.Items.Add(menu_Create("Open", "OPEN"));
+            m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close Tab", "CLOSE_TAB"));
 
@@ -348,7 +362,6 @@ namespace TTView
             setting.DropDownItems.AddRange(new ToolStripItem[] { s1, s2, s3 });
             m_menu.Items.Add(setting);
 
-            m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Convert This Page", "OCR_TEXT_PAGE"));
             m_menu.Items.Add(menu_Create("Convert All Page", "OCR_TEXT_ALL_PAGE"));
@@ -594,11 +607,16 @@ namespace TTView
                     m_tabs.SelectedItem.Title =
                         string.Format("{0}-{1}.{2}", page + 1, __file.PageTotal,
                         Path.GetFileNameWithoutExtension(__file.File));
-
+                    
                     if (m_app.Setting.AutoResize)
                     {
                         __image.Width = img.Width;
                         __image.Height = img.Height;
+                    }
+                    using (var ms = new MemoryStream())
+                    {
+                        img.Save(ms, ImageFormat.Jpeg);
+                        m_size.Text = string.Format("{0} kb", (int)(ms.ToArray().Length / 1024));
                     }
                 }
             }

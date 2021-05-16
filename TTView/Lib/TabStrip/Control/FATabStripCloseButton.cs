@@ -56,7 +56,8 @@ namespace FarsiLibrary.Win
                 g.DrawRectangle(SystemPens.Highlight, borderRect);
             }
 
-            using (Pen pen = new Pen(Color.Black, 1.6f))
+            //????????????????????????????????
+            using (Pen pen = new Pen(SystemColors.Control, 1.6f))
             {
                 g.DrawLine(pen, crossRect.Left + 3, crossRect.Top + 3,
                     crossRect.Right - 5, crossRect.Bottom - 4);

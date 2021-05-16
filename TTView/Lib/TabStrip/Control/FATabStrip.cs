@@ -330,7 +330,7 @@ namespace FarsiLibrary.Win
             }
 
             // draw border: left, top, right, bottom of tab control
-            //e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
+            e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             #region Draw Pages
@@ -791,6 +791,7 @@ namespace FarsiLibrary.Win
 
             menuGlyph = new FATabStripMenuGlyph(ToolStripRenderer);
             closeButton = new FATabStripCloseButton(ToolStripRenderer);
+            
             Font = defaultFont;
             sf = new StringFormat();
 

@@ -45,7 +45,9 @@ namespace FarsiLibrary.Win
         {
             if (isMouseOver)
             {
-                Color fill = renderer.ColorTable.ButtonSelectedHighlight; //Color.FromArgb(35, SystemColors.Highlight);
+                //???????????????????????????
+                Color fill = renderer.ColorTable.ButtonSelectedHighlight;
+                //Color fill = Color.FromArgb(35, SystemColors.Highlight);
                 g.FillRectangle(new SolidBrush(fill), glyphRect);
                 Rectangle borderRect = glyphRect;
 
@@ -59,7 +61,8 @@ namespace FarsiLibrary.Win
 
             g.SmoothingMode = SmoothingMode.Default;
 
-            using (Pen pen = new Pen(Color.Black))
+            //?????????????????????????????
+            using (Pen pen = new Pen(SystemColors.GrayText))
             {
                 pen.Width = 2;
 
@@ -67,7 +70,7 @@ namespace FarsiLibrary.Win
                     new Point(glyphRect.Right - (glyphRect.Width / 3), glyphRect.Height / 2 - 1));
             }
 
-            g.FillPolygon(Brushes.Black, new Point[]{
+            g.FillPolygon(Brushes.Gray, new Point[]{
                 new Point(glyphRect.Left + (glyphRect.Width / 3)-2, glyphRect.Height / 2+2),
                 new Point(glyphRect.Right - (glyphRect.Width / 3), glyphRect.Height / 2+2),
                 new Point(glyphRect.Left + glyphRect.Width / 2-1,glyphRect.Bottom-4)});
