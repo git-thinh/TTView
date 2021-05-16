@@ -322,6 +322,8 @@ namespace TTView
         }
 
         #endregion
+        
+        #region [ MENU - COMMAND REPLY ]
 
         void menu_initUI()
         {
@@ -347,6 +349,9 @@ namespace TTView
             m_menu.Items.Add(setting);
 
             m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
+            m_menu.Items.Add(new ToolStripSeparator());
+            m_menu.Items.Add(menu_Create("Convert This Page", "OCR_TEXT_PAGE"));
+            m_menu.Items.Add(menu_Create("Convert All Page", "OCR_TEXT_ALL_PAGE"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close", "EXIT"));
             m_tabs.ContextMenuStrip = m_menu;
@@ -377,11 +382,55 @@ namespace TTView
                 case "RECENT_FILES":
                     openFormRecentFiles();
                     break;
+                case "OCR_TEXT_PAGE":
+                    App.Send(COMMANDS.OCR_TEXT_PAGE, string.Format("{0}.{1}", __file.Id, __file.PageCurrent));
+                    break;
+                case "OCR_TEXT_ALL_PAGE":
+                    App.Send(COMMANDS.OCR_TEXT_ALL_PAGE, string.Format("{0}", __file.Id));
+                    break;
+                case "OCR_BOX_PAGE":
+                    App.Send(COMMANDS.OCR_BOX_PAGE, string.Format("{0}.{1}", __file.Id, __file.PageCurrent));
+                    break;
+                case "OCR_BOX_ALL_PAGE":
+                    App.Send(COMMANDS.OCR_BOX_ALL_PAGE, string.Format("{0}", __file.Id));
+                    break;
                 case "EXIT":
                     this.Close();
                     break;
             }
         }
+
+        public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
+        {
+            switch (cmd)
+            {
+                case COMMANDS.PDF_SPLIT_ALL_JPG:
+                    var id = data.Get<long>("id");
+                    var page_total = data.Get<int>("page_total");
+                    var page = data.Get<int>("page");
+                    m_message.Text = string.Format("{0}-{1}...", page, page_total);
+
+                    if (page == 0)
+                    {
+                        _updateInfoFile(input, id, page_total);
+                        if (m_tabs.Items.Count == 1) page_Go(0);
+                    }
+
+                    if (page == page_total)
+                    {
+                        m_message.Text = string.Format("{0}-{1} done", page, page_total);
+                    }
+                    break;
+                case COMMANDS.OCR_TEXT_PAGE:
+                    convertPageCurrent(data);
+                    break;
+                case COMMANDS.OCR_TEXT_ALL_PAGE:
+                    convertPageAll(data);
+                    break;
+            }
+        }
+
+        #endregion
 
         #region [ TAB OPEN ]
 
@@ -398,7 +447,8 @@ namespace TTView
                 Width = main.Width,
                 Height = 500
             };
-            fm.Shown += (se, ev) => {
+            fm.Shown += (se, ev) =>
+            {
                 this.Left = main.Left;
             };
             var ls = new ListBox()
@@ -417,7 +467,7 @@ namespace TTView
                 fm.Close();
             };
             foreach (var fo in m_app.Files) ls.Items.Add(Path.GetFileNameWithoutExtension(fo.File));
-            fm.Controls.Add(ls);            
+            fm.Controls.Add(ls);
             fm.ShowDialog();
         }
 
@@ -458,28 +508,6 @@ namespace TTView
                 fi.PageTotal = pageTotal;
             }
             return fi;
-        }
-
-        public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
-        {
-            if (cmd == COMMANDS.PDF_SPLIT_ALL_JPG)
-            {
-                var id = data.Get<long>("id");
-                var page_total = data.Get<int>("page_total");
-                var page = data.Get<int>("page");
-                m_message.Text = string.Format("{0}-{1}...", page, page_total);
-
-                if (page == 0)
-                {
-                    _updateInfoFile(input, id, page_total);
-                    if (m_tabs.Items.Count == 1) page_Go(0);
-                }
-
-                if (page == page_total)
-                {
-                    m_message.Text = string.Format("{0}-{1} done", page, page_total);
-                }
-            }
         }
 
         void tab_Change()
@@ -574,6 +602,20 @@ namespace TTView
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region [ CONVERT TO ]
+
+        void convertPageCurrent(Dictionary<string, object> data)
+        {
+
+        }
+
+        void convertPageAll(Dictionary<string, object> data)
+        {
+
         }
 
         #endregion

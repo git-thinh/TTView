@@ -65,6 +65,7 @@ namespace TTView
                         var cmd = reader.Read<COMMANDS>();
                         var requestId = reader.ReadRequestId();
                         var input = reader.Read<string>();
+                        var message = reader.Read<string>();
                         var data = reader.Read<Dictionary<string, object>>();
                         main._requestReply(requestId, cmd, input, data);
                     }                        
@@ -75,7 +76,7 @@ namespace TTView
         public static string Send(COMMANDS cmd, string input, Dictionary<string, object> data = null)
         {
             string requestId = Guid.NewGuid().ToString();
-            var packet = new NetPacket(cmd, requestId, input, data);
+            var packet = new NetPacket(cmd, requestId, input, string.Empty, data);
             client.Send(packet);
             return requestId;
         }
