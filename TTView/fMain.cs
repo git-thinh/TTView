@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace TTView
     public class fMain : Form, IMain
     {
         Color __BG = Color.Black;
+        PictureBox m_image;
 
         #region [ MAIN ]
 
@@ -53,6 +55,11 @@ namespace TTView
             this.Controls.Add(m_tabs);
             m_tabs.ClickClose += (se, ev) => { this.Close(); };
             m_tabs.MouseMove += f_form_move_MouseDown;
+            m_tabs.TabStripItemSelectionChanged += (se) =>
+            {
+                if (se.ChangeType == FATabStripItemChangeTypes.SelectionChanged)
+                    tab_Change();
+            };
 
             // RESIZE
             m_resize = new Panel()
@@ -84,8 +91,8 @@ namespace TTView
             m_resize.BringToFront();
 
             toolbar_initUI();
-
             menu_initUI();
+
             openHistory();
         }
 
@@ -102,10 +109,10 @@ namespace TTView
             switch (e.KeyData)
             {
                 case Keys.Right:
-                    //pageOpen(PageNumber + 1);
+                    page_Go(1);
                     break;
                 case Keys.Left:
-                    //pageOpen(PageNumber - 1);
+                    page_Go(-1);
                     break;
             }
         }
@@ -295,13 +302,38 @@ namespace TTView
 
         #endregion
 
+        oFile _getFile(string file)
+            => m_app.Files.Where(x => x.File == file).Take(1).SingleOrDefault();
+
+        oFile _updateInfoFile(string file, long docId, int pageTotal) {
+            var fi = _getFile(file);
+            if (fi == null)
+            {
+                fi = new oFile() { File = file, PageTotal = pageTotal, Id = docId };
+                m_app.Files.Add(fi);
+            }
+            else {
+                fi.Id = docId;
+                fi.PageTotal = pageTotal;
+            }
+            return fi;
+        }
+
         public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
         {
             if (input == m_app.FileCurrent.File)
             {
+                var id = data.Get<long>("id");
                 var page_total = data.Get<int>("page_total");
                 var page = data.Get<int>("page");
                 m_message.Text = string.Format("{0}-{1}...", page, page_total);
+
+                if (page == 0)
+                {
+                    m_app.FileCurrent = _updateInfoFile(input, id, page_total);
+                    page_Go(page);
+                }
+
                 if (page == page_total)
                 {
                     m_message.Text = string.Format("{0}-{1} done", page, page_total);
@@ -383,8 +415,18 @@ namespace TTView
             }
         }
 
+        void tab_Change() {
+            string file = m_tabs.SelectedItem.Tag as string;
+        }
+
         void tab_Create(string file)
         {
+            var fi = _getFile(file);
+            if (fi == null) {
+                fi = new oFile() { File = file };
+                m_app.Files.Add(fi);
+            }
+
             string title = Path.GetFileNameWithoutExtension(file);
 
             var image = new PictureBox()
@@ -407,15 +449,26 @@ namespace TTView
 
             var tab = new FATabStripItem(title, box)
             {
+                Tag = file,
                 CanClose = false,
                 BackColor = __BG
             };
             box.MouseMove += f_form_move_MouseDown;
             image.MouseMove += f_form_move_MouseDown;
             m_tabs.Items.Add(tab);
-            tab.Tag = image;
 
+            m_image = image;
             var requestId = App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
+        }
+
+        void page_Go(int page = 0)
+        {
+            if (page > -1 && page < m_app.FileCurrent.PageTotal)
+            {
+                m_app.FileCurrent.PageCurrent = page;
+                var img = App.GetBitmap(m_app.FileCurrent.Id, page);
+                m_image.Image = img;
+            }
         }
 
         void openHistory()

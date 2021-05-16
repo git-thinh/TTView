@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -71,7 +72,6 @@ namespace TTView
             }));
             __threadQueue.Start(__replies);
         }
-
         public static string Send(COMMANDS cmd, string input, Dictionary<string, object> data = null)
         {
             string requestId = Guid.NewGuid().ToString();
@@ -80,7 +80,10 @@ namespace TTView
             return requestId;
         }
 
+        public static Bitmap GetBitmap(long docId, int page)
+            => redis.HGET_BITMAP(docId, page);
 
+        static RedisBase redis;
         static NetClient subcribe;
         static NetClient client;
         static IMain main;
@@ -88,8 +91,7 @@ namespace TTView
         static void Main(string[] args)
         {
             try
-            {
-                _init();
+            {                
                 __processQueueReceive();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -111,6 +113,8 @@ namespace TTView
                 threadSucribe.Start();
                 client = new NetClient(__CONFIG.UDP_HOST, __CONFIG.UDP_PORT);
 
+                redis = new RedisBase(new RedisSetting(REDIS_TYPE.ONLY_READ, __CONFIG.REDIS_PORT_READ));
+
                 Application.Run(m);
                 writeSetting(app);
 
@@ -125,10 +129,6 @@ namespace TTView
             }
             catch(Exception ex) { 
             }
-        }
-
-        static void _init()
-        {
         }
 
         static oApp loadSetting()
