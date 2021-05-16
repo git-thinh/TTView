@@ -7,7 +7,7 @@ namespace TTView
 
     public interface IMain
     {
-        void _requestReply(oRequestReply data);
+        void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data);
     }
 
     public class oFile

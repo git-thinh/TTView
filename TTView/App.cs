@@ -43,67 +43,88 @@ namespace TTView
             };
         }
 
-
         static bool __running = true;
-        static KeySubscriber __subscriber;
+        static bool __pending = true;
         static Thread __threadQueue = null;
-        static ConcurrentQueue<byte[]> __requests = new ConcurrentQueue<byte[]>() { };
+        static ConcurrentQueue<NetPacket> __replies = new ConcurrentQueue<NetPacket>() { };
         static AutoResetEvent __signal = new AutoResetEvent(false);
         static void __processQueueReceive()
         {
             __threadQueue = new Thread(new ParameterizedThreadStart((o) =>
             {
-                var qs = o as ConcurrentQueue<byte[]>;
+                var qs = o as ConcurrentQueue<NetPacket>;
                 while (__running)
                 {
-                    if (qs.Count == 0)
+                    if (__pending || qs.Count == 0)
                         __signal.WaitOne();
-                    byte[] buf;
-                    qs.TryDequeue(out buf);
-                    oRequestReply rp = oRequestReply.Load(buf);
-                    if (rp != null)
-                        main._requestReply(rp);
+                    NetPacket packet;
+                    qs.TryDequeue(out packet);
+                    if (packet != null) {
+                        var reader = new NetPacketReader(packet);
+                        var cmd = reader.Read<COMMANDS>();
+                        var requestId = reader.ReadRequestId();
+                        var input = reader.Read<string>();
+                        var data = reader.Read<Dictionary<string, object>>();
+                        main._requestReply(requestId, cmd, input, data);
+                    }                        
                 }
             }));
-            __threadQueue.Start(__requests);
+            __threadQueue.Start(__replies);
         }
 
-        static void _subcribeTask(IMain main)
+        public static string Send(COMMANDS cmd, string input, Dictionary<string, object> data = null)
         {
-            __subscriber = new KeySubscriber((reply) =>
-            {
-                __requests.Enqueue(reply);
-                __signal.Set();
-            });
-            __subscriber.Start();
+            string requestId = Guid.NewGuid().ToString();
+            var packet = new NetPacket(cmd, requestId, input, data);
+            client.Send(packet);
+            return requestId;
         }
 
+
+        static NetClient subcribe;
+        static NetClient client;
         static IMain main;
         [STAThread]
         static void Main(string[] args)
         {
-            var tn = typeof(Dictionary<string, object>).Name;
+            try
+            {
+                _init();
+                __processQueueReceive();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            _init();
-            __processQueueReceive();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+                var app = loadSetting();
+                var m = new fMain(app);
+                main = (IMain)m;
 
-            var app = loadSetting();
-            var m = new fMain(app);
-            main = (IMain)m;
-            var t = new Thread(new ParameterizedThreadStart((p) => _subcribeTask((IMain)p)));
-            t.Start(main);
-            Application.Run(m);
+                subcribe = new NetClient(__CONFIG.UDP_HOST, __CONFIG.UDP_PORT);
+                subcribe.OnRecieve += (packet) =>
+                {
+                    __pending = true;
+                    __replies.Enqueue(packet);
+                    __pending = false;
+                    __signal.Set();
+                };
+                subcribe.Subcribe();
+                Thread threadSucribe = new Thread(subcribe.Listen);
+                threadSucribe.Start();
+                client = new NetClient(__CONFIG.UDP_HOST, __CONFIG.UDP_PORT);
 
-            __running = false;
-            __subscriber.Stop();
-            t.Abort();
+                Application.Run(m);
+                writeSetting(app);
 
-            writeSetting(app);
+                client.Stop();
+                subcribe.Stop();
+                threadSucribe.Abort();
+                __threadQueue.Abort();
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+                __running = false;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+            catch(Exception ex) { 
+            }
         }
 
         static void _init()

@@ -12,9 +12,6 @@ namespace TTView
 {
     public class fMain : Form, IMain
     {
-        List<string> m_requests = new List<string>();
-        List<oRequestReply> m_replies = new List<oRequestReply>();
-
         Color __BG = Color.Black;
 
         #region [ MAIN ]
@@ -298,27 +295,25 @@ namespace TTView
 
         #endregion
 
-        public void _requestReply(oRequestReply r)
+        public void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data)
         {
-            m_replies.Add(r);
-            //var index = m_requests.FindIndex(x => x == r.request_id);
-            //if (index != -1) {
-
-            //    m_message.Text = r.ToString();
-            //    if (r.tag == "COMPLETE") {
-            //        //MessageBox.Show("Ok!!!");
-            //    }
-            //}
-
-            if (r.tag == "COMPLETE")
-                ;
+            if (input == m_app.FileCurrent.File)
+            {
+                var page_total = data.Get<int>("page_total");
+                var page = data.Get<int>("page");
+                m_message.Text = string.Format("{0}-{1}...", page, page_total);
+                if (page == page_total)
+                {
+                    m_message.Text = string.Format("{0}-{1} done", page, page_total);
+                }
+            }
         }
 
         void toolbar_initUI()
         {
             m_message = new Label()
             {
-                BackColor = Color.Gray,
+                ForeColor = Color.White,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Dock = DockStyle.Fill
             };
@@ -420,8 +415,7 @@ namespace TTView
             m_tabs.Items.Add(tab);
             tab.Tag = image;
 
-            var requestId = StaticDocument.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
-            m_requests.Add(requestId);
+            var requestId = App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, file);
         }
 
         void openHistory()
