@@ -344,6 +344,12 @@ namespace TTView
             m_menu.Items.Add(menu_Create("Open", "OPEN"));
             m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
             m_menu.Items.Add(new ToolStripSeparator());
+            m_menu.Items.Add(menu_Create("Select Lines On Page", "OCR_BOX_PAGE"));
+            m_menu.Items.Add(menu_Create("Setting For Select Lines", "OCR_BOX_SETTING"));
+            m_menu.Items.Add(new ToolStripSeparator());
+            m_menu.Items.Add(menu_Create("Get Text This Page", "OCR_TEXT_PAGE"));
+            m_menu.Items.Add(menu_Create("Get Text All Page", "OCR_TEXT_ALL_PAGE"));
+            m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close Tab", "CLOSE_TAB"));
 
             var setting = menu_Create("Setting");
@@ -362,9 +368,6 @@ namespace TTView
             setting.DropDownItems.AddRange(new ToolStripItem[] { s1, s2, s3 });
             m_menu.Items.Add(setting);
 
-            m_menu.Items.Add(new ToolStripSeparator());
-            m_menu.Items.Add(menu_Create("Convert This Page", "OCR_TEXT_PAGE"));
-            m_menu.Items.Add(menu_Create("Convert All Page", "OCR_TEXT_ALL_PAGE"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close", "EXIT"));
             m_tabs.ContextMenuStrip = m_menu;
@@ -401,6 +404,10 @@ namespace TTView
                 case "OCR_TEXT_ALL_PAGE":
                     App.Send(COMMANDS.OCR_TEXT_ALL_PAGE, string.Format("{0}", __file.Id));
                     break;
+
+                case "OCR_BOX_SETTING":
+                    ocrBoxSetting();
+                    break;
                 case "OCR_BOX_PAGE":
                     App.Send(COMMANDS.OCR_BOX_PAGE, string.Format("{0}.{1}", __file.Id, __file.PageCurrent));
                     break;
@@ -433,6 +440,9 @@ namespace TTView
                     {
                         m_message.Text = string.Format("{0}-{1} done", page, page_total);
                     }
+                    break;
+                case COMMANDS.OCR_BOX_PAGE:
+                    ocrBoxResponse(data);
                     break;
                 case COMMANDS.OCR_TEXT_PAGE:
                     convertPageCurrent(data);
@@ -624,7 +634,39 @@ namespace TTView
 
         #endregion
 
-        #region [ CONVERT TO ]
+        #region [ OCR ]
+
+        void ocrBoxSetting()
+        {
+
+        }
+
+        void ocrBoxResponse(Dictionary<string, object> data)
+        {
+            var id = data.Get<long>("id");
+            var page = data.Get<int>("page");
+            var box_count = data.Get<int>("box_count");
+            var box_text = data.Get<string>("box_text");
+            var box_format = data.Get<string>("box_format");
+            if (id == __file.Id && page == __file.PageCurrent) {
+                if (!string.IsNullOrEmpty(box_text)) {
+                    var a = box_text.Split('|').Select(x => x.Split('_').Select(i => int.Parse(i)).ToArray()).ToArray();
+
+                    Image image = (Image)__image.Image.Clone();
+                    using (Graphics g = Graphics.FromImage(image))
+                    {
+                        Pen blackPen = new Pen(Color.Red, 1);
+                        for (int i = 0; i < a.Length; i++)
+                        {
+                            Rectangle rect = new Rectangle(a[i][0], a[i][1], a[i][2], a[i][3]);
+                            g.DrawRectangle(blackPen, rect);
+                        }
+                    }
+
+                    __image.Image = image;
+                }
+            }
+        }
 
         void convertPageCurrent(Dictionary<string, object> data)
         {

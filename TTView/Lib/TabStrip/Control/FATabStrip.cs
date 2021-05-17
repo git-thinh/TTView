@@ -330,7 +330,7 @@ namespace FarsiLibrary.Win
             }
 
             // draw border: left, top, right, bottom of tab control
-            e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
+            //e.Graphics.DrawRectangle(SystemPens.ControlDark, borderRc);
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             #region Draw Pages
