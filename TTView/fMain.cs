@@ -58,6 +58,7 @@ namespace TTView
             m_tabs = new FATabStrip()
             {
                 Dock = DockStyle.Fill,
+                Font = new Font("Arial", 11.0f)
                 //AlwaysShowClose = false
                 //AlwaysShowMenuGlyph = false,
                 //BackColor = __BG_IMAGE
