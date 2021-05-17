@@ -117,6 +117,8 @@ namespace TTView
                 redis = new RedisBase(new RedisSetting(REDIS_TYPE.ONLY_READ, __CONFIG.REDIS_PORT_READ));
 
                 Application.Run(m);
+                //Application.Run(new fSetting());
+
                 app.Top = m.Top;
                 app.Left = m.Left;
                 app.Height = m.Height;

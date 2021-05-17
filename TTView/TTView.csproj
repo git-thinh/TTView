@@ -155,6 +155,12 @@
     <Compile Include="fMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="fSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSetting.Designer.cs">
+      <DependentUpon>fSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ControlTransparent.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -208,25 +214,6 @@
     <Compile Include="Lib\Gma.System.MouseKeyHook\WinApi\ThreadNativeMethods.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Lib\TabStrip\BaseClasses\BaseStyledPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Lib\TabStrip\Control\FATabStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Lib\TabStrip\Control\FATabStripCloseButton.cs" />
-    <Compile Include="Lib\TabStrip\Control\FATabStripItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Lib\TabStrip\Control\FATabStripItemCollection.cs" />
-    <Compile Include="Lib\TabStrip\Control\FATabStripMenuGlyph.cs" />
-    <Compile Include="Lib\TabStrip\Delegates.cs" />
-    <Compile Include="Lib\TabStrip\Design\FATabStripDesigner.cs" />
-    <Compile Include="Lib\TabStrip\Design\FATabStripItemDesigner.cs" />
-    <Compile Include="Lib\TabStrip\Design\ICaptionSupport.cs" />
-    <Compile Include="Lib\TabStrip\Enums.cs" />
-    <Compile Include="Lib\TabStrip\Helpers\CollectionWithEvents.cs" />
-    <Compile Include="Lib\TabStrip\_CONST_TAB.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\_Shared\MMF\ReadMe.txt">
@@ -235,9 +222,18 @@
     <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="DLL\LZ4.dll" />
     <EmbeddedResource Include="DLL\System.Core.dll" />
+    <EmbeddedResource Include="fSetting.resx">
+      <DependentUpon>fSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DLL\System.Threading.dll" />
     <Content Include="icon.ico" />
     <Content Include="Lib\Gma.System.MouseKeyHook\HotKeys\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\_Shared\TabStrip\TabStrip.csproj">
+      <Project>{f929ca6a-87bd-42c8-8d0a-6455db6f55dc}</Project>
+      <Name>TabStrip</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

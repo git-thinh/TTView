@@ -14,8 +14,10 @@ namespace TTView
 {
     public class fMain : Form, IMain
     {
-        Color __BG = Color.Black;
+        Color __BG_GRAY = Color.DimGray;
+        Color __BG_BLACK = Color.Black;
         Color __TEXT_COLOR = Color.White;
+
         #region [ MAIN ]
 
         PictureBox __image;
@@ -39,7 +41,7 @@ namespace TTView
 
             m_app = app;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.BackColor = __BG;
+            this.BackColor = __BG_GRAY;
 
             this.KeyPreview = true;
             this.KeyUp += main_keyUp;
@@ -58,9 +60,10 @@ namespace TTView
                 Dock = DockStyle.Fill,
                 //AlwaysShowClose = false
                 //AlwaysShowMenuGlyph = false,
+                //BackColor = __BG_IMAGE
             };
             this.Controls.Add(m_tabs);
-            m_tabs.ClickClose += (se, ev) => { this.Close(); };
+            //m_tabs.ClickClose += (se, ev) => { this.Close(); };
             m_tabs.MouseMove += f_form_move_MouseDown;
             m_tabs.TabStripItemSelectionChanged += (se) =>
             {
@@ -72,7 +75,7 @@ namespace TTView
             m_resize = new Panel()
             {
                 Anchor = AnchorStyles.Bottom | AnchorStyles.Right,
-                BackColor = Color.Black,
+                BackColor = __BG_BLACK,
                 Size = new Size(8, 8),
                 Top = this.Height - 8,
                 Left = this.Width - 8,
@@ -328,14 +331,15 @@ namespace TTView
             {
                 Height = 18,
                 Dock = DockStyle.Bottom,
-                Visible = !m_app.Setting.HideToolbar
+                Visible = !m_app.Setting.HideToolbar,
+                Padding = new Padding(0, 0, 10, 0)
             };
             m_toolbar.Controls.AddRange(new Control[] { m_message, m_size });
             this.Controls.Add(m_toolbar);
         }
 
         #endregion
-        
+
         #region [ MENU - COMMAND REPLY ]
 
         void menu_initUI()
@@ -430,7 +434,7 @@ namespace TTView
                     var page = data.Get<int>("page");
                     m_message.Text = string.Format("{0}-{1}...", page, page_total);
 
-                    if (page == 0)
+                    if (page == __file.PageCurrent)
                     {
                         _updateInfoFile(input, id, page_total);
                         if (m_tabs.Items.Count == 1) page_Go(0);
@@ -462,7 +466,7 @@ namespace TTView
             var main = this;
             var fm = new Form()
             {
-                BackColor = __BG,
+                BackColor = __BG_GRAY,
                 FormBorderStyle = FormBorderStyle.FixedSingle,
                 MinimizeBox = false,
                 MaximizeBox = false,
@@ -479,7 +483,7 @@ namespace TTView
                 Dock = DockStyle.Fill,
                 BorderStyle = BorderStyle.None,
                 Font = new Font("Arial", 15.0f),
-                BackColor = __BG,
+                BackColor = __BG_GRAY,
                 ForeColor = Color.White
             };
             ls.SelectedIndexChanged += (se, ev) =>
@@ -496,7 +500,8 @@ namespace TTView
 
         void openHistory()
         {
-            if (!string.IsNullOrEmpty(m_app.FileCurrent.File))
+            if (m_app.FileCurrent != null
+                && !string.IsNullOrEmpty(m_app.FileCurrent.File))
             {
                 __file = m_app.FileCurrent;
                 tab_Create(__file.File);
@@ -576,7 +581,7 @@ namespace TTView
             var image = new PictureBox()
             {
                 BorderStyle = BorderStyle.FixedSingle,
-                BackColor = __BG,
+                BackColor = __BG_GRAY,
                 Top = 0,
                 Left = 0,
                 Width = this.Width - 40,
@@ -587,6 +592,7 @@ namespace TTView
                 Dock = DockStyle.Fill,
                 BorderStyle = BorderStyle.None,
                 AutoScroll = true,
+                BackColor = __BG_BLACK
             };
             box.Controls.Add(image);
             image.MouseDoubleClick += (se, ev) => openDialog();
@@ -595,7 +601,7 @@ namespace TTView
             {
                 Tag = file,
                 CanClose = false,
-                BackColor = __BG
+                BackColor = __BG_GRAY
             };
             box.MouseMove += f_form_move_MouseDown;
             image.MouseMove += f_form_move_MouseDown;
@@ -611,13 +617,18 @@ namespace TTView
             {
                 __file.PageCurrent = page;
                 var img = App.GetBitmap(__file.Id, page);
+                if (img == null)
+                {
+                    App.Send(COMMANDS.PDF_SPLIT_ALL_JPG, __file.File);
+                    return;
+                }
                 if (__image != null)
                 {
                     __image.Image = img;
                     m_tabs.SelectedItem.Title =
                         string.Format("{0}-{1}.{2}", page + 1, __file.PageTotal,
                         Path.GetFileNameWithoutExtension(__file.File));
-                    
+
                     if (m_app.Setting.AutoResize)
                     {
                         __image.Width = img.Width;
@@ -648,8 +659,10 @@ namespace TTView
             var box_count = data.Get<int>("box_count");
             var box_text = data.Get<string>("box_text");
             var box_format = data.Get<string>("box_format");
-            if (id == __file.Id && page == __file.PageCurrent) {
-                if (!string.IsNullOrEmpty(box_text)) {
+            if (id == __file.Id && page == __file.PageCurrent)
+            {
+                if (!string.IsNullOrEmpty(box_text))
+                {
                     var a = box_text.Split('|').Select(x => x.Split('_').Select(i => int.Parse(i)).ToArray()).ToArray();
 
                     Image image = (Image)__image.Image.Clone();
