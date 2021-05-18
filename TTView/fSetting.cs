@@ -8,8 +8,13 @@ namespace TTView
     {
         #region [ MAIN ]
 
-        public fSetting()
+        readonly oApp m_app;
+        readonly IMain m_main;
+        public fSetting(oApp app, IMain main)
         {
+            m_app = app;
+            m_main = main;
+
             InitializeComponent();
 
             m_tabs.WindowClosed += (se, ev) => {
@@ -41,7 +46,7 @@ namespace TTView
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-            => _save();
+            => m_app.WriteFile();
         
         #endregion
 
@@ -66,8 +71,16 @@ namespace TTView
 
         #endregion
 
-        void _save() { 
-        
+        void openDialog()
+        {
+            using (OpenFileDialog d = new OpenFileDialog())
+            {
+                d.Filter = "pdf files (*.pdf)|*.pdf|TT files (*.tt)|*.tt|All files (*.*)|*.*";
+                d.FilterIndex = 1;
+                d.RestoreDirectory = true;
+                //if (d.ShowDialog() == DialogResult.OK) tab_Create(d.FileName);
+            }
         }
+         
     }
 }

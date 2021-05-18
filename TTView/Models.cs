@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace TTView
@@ -26,20 +27,32 @@ namespace TTView
         public bool HideToolbar { set; get; }
     }
 
+    public class oWindow
+    {
+        public int Top { set; get; }
+        public int Left { set; get; }
+        public int Width { set; get; }
+        public int Height { set; get; }
+    }
+
     public class oApp
     {
         public oFile FileCurrent { set; get; }
         public List<oFile> Files { set; get; }
         public oSetting Setting { set; get; }
-        public int Top { set; get; }
-        public int Left { set; get; }
-        public int Width { set; get; }
-        public int Height { set; get; }
+        public oWindow Window { set; get; }
         public oApp()
         {
             this.FileCurrent = new oFile();
             this.Files = new List<oFile>();
             this.Setting = new oSetting();
+        }
+
+        public void WriteFile()
+        {
+            var boisSerializer = new Salar.Bois.BoisSerializer();
+            using (var file = new FileStream("setting.bin", FileMode.OpenOrCreate))
+                boisSerializer.Serialize<oApp>(this, file);
         }
     }
 }

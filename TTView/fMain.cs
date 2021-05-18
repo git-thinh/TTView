@@ -59,9 +59,6 @@ namespace TTView
             {
                 Dock = DockStyle.Fill,
                 Font = new Font("Arial", 11.0f)
-                //AlwaysShowClose = false
-                //AlwaysShowMenuGlyph = false,
-                //BackColor = __BG_IMAGE
             };
             this.Controls.Add(m_tabs);
             m_tabs.WindowClosed += (se, ev) => { this.Close(); };
@@ -423,7 +420,7 @@ namespace TTView
                     App.Send(COMMANDS.OCR_BOX_ALL_PAGE, string.Format("{0}", __file.Id));
                     break;
                 case "OPEN_SETTING":
-                    new fSetting().ShowDialog();
+                    new fSetting(m_app, this).ShowDialog();
                     break;
                 case "EXIT":
                     this.Close();

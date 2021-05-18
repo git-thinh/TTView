@@ -116,14 +116,14 @@ namespace TTView
 
                 redis = new RedisBase(new RedisSetting(REDIS_TYPE.ONLY_READ, __CONFIG.REDIS_PORT_READ));
 
-                Application.Run(m);
-                //Application.Run(new fSetting());
+                //Application.Run(m);
+                Application.Run(new fSetting(app, main));
 
                 app.Top = m.Top;
                 app.Left = m.Left;
                 app.Height = m.Height;
                 app.Width = m.Width;
-                writeSetting(app);
+                app.WriteFile();
 
                 client.Stop();
                 subcribe.Stop();
@@ -153,12 +153,6 @@ namespace TTView
             return new oApp();
         }
 
-        static void writeSetting(oApp app)
-        {
-            var boisSerializer = new BoisSerializer();
-            using (var file = new FileStream("setting.bin", FileMode.OpenOrCreate))
-                boisSerializer.Serialize<oApp>(app, file);
-        }
     }
 
 }
