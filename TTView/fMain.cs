@@ -64,7 +64,7 @@ namespace TTView
                 //BackColor = __BG_IMAGE
             };
             this.Controls.Add(m_tabs);
-            //m_tabs.ClickClose += (se, ev) => { this.Close(); };
+            m_tabs.WindowClosed += (se, ev) => { this.Close(); };
             m_tabs.MouseMove += f_form_move_MouseDown;
             m_tabs.TabStripItemSelectionChanged += (se) =>
             {
@@ -349,32 +349,35 @@ namespace TTView
             m_menu.Items.Add(menu_Create("Open", "OPEN"));
             m_menu.Items.Add(menu_Create("Recent Files", "RECENT_FILES"));
             m_menu.Items.Add(new ToolStripSeparator());
-            m_menu.Items.Add(menu_Create("Select Lines On Page", "OCR_BOX_PAGE"));
-            m_menu.Items.Add(menu_Create("Setting For Select Lines", "OCR_BOX_SETTING"));
-            m_menu.Items.Add(new ToolStripSeparator());
-            m_menu.Items.Add(menu_Create("Get Text This Page", "OCR_TEXT_PAGE"));
-            m_menu.Items.Add(menu_Create("Get Text All Page", "OCR_TEXT_ALL_PAGE"));
+            m_menu.Items.Add(menu_Create("Setting", "OPEN_SETTING"));
             m_menu.Items.Add(new ToolStripSeparator());
             m_menu.Items.Add(menu_Create("Close Tab", "CLOSE_TAB"));
 
-            var setting = menu_Create("Setting");
-            var s1 = menu_Create("Auto Resize", "SETTING_AUTO_RESIZE");
-            s1.Checked = m_app.Setting.AutoResize;
-            s1.CheckState = m_app.Setting.AutoResize ? CheckState.Checked : CheckState.Unchecked;
+            //m_menu.Items.Add(new ToolStripSeparator());
+            //m_menu.Items.Add(menu_Create("Select Lines On Page", "OCR_BOX_PAGE"));
+            //m_menu.Items.Add(menu_Create("Setting For Select Lines", "OCR_BOX_SETTING"));
+            //m_menu.Items.Add(new ToolStripSeparator());
+            //m_menu.Items.Add(menu_Create("Get Text This Page", "OCR_TEXT_PAGE"));
+            //m_menu.Items.Add(menu_Create("Get Text All Page", "OCR_TEXT_ALL_PAGE"));
 
-            var s2 = menu_Create("Open All  | 10 Items", "SETTING_OPEN_ALL_|_10");
-            s2.Checked = m_app.Setting.OpenAllOr10;
-            s2.CheckState = m_app.Setting.OpenAllOr10 ? CheckState.Checked : CheckState.Unchecked;
+            //var setting = menu_Create("Setting");
+            //var s1 = menu_Create("Auto Resize", "SETTING_AUTO_RESIZE");
+            //s1.Checked = m_app.Setting.AutoResize;
+            //s1.CheckState = m_app.Setting.AutoResize ? CheckState.Checked : CheckState.Unchecked;
 
-            var s3 = menu_Create("Hide Toolbar", "SETTING_HIDE_TOOLBAR");
-            s3.Checked = m_app.Setting.HideToolbar;
-            s3.CheckState = m_app.Setting.HideToolbar ? CheckState.Checked : CheckState.Unchecked;
+            //var s2 = menu_Create("Open All  | 10 Items", "SETTING_OPEN_ALL_|_10");
+            //s2.Checked = m_app.Setting.OpenAllOr10;
+            //s2.CheckState = m_app.Setting.OpenAllOr10 ? CheckState.Checked : CheckState.Unchecked;
 
-            setting.DropDownItems.AddRange(new ToolStripItem[] { s1, s2, s3 });
-            m_menu.Items.Add(setting);
+            //var s3 = menu_Create("Hide Toolbar", "SETTING_HIDE_TOOLBAR");
+            //s3.Checked = m_app.Setting.HideToolbar;
+            //s3.CheckState = m_app.Setting.HideToolbar ? CheckState.Checked : CheckState.Unchecked;
 
-            m_menu.Items.Add(new ToolStripSeparator());
-            m_menu.Items.Add(menu_Create("Close", "EXIT"));
+            //setting.DropDownItems.AddRange(new ToolStripItem[] { s1, s2, s3 });
+            //m_menu.Items.Add(setting);
+
+            //m_menu.Items.Add(new ToolStripSeparator());
+            //m_menu.Items.Add(menu_Create("Close", "EXIT"));
             m_tabs.ContextMenuStrip = m_menu;
         }
 
@@ -418,6 +421,9 @@ namespace TTView
                     break;
                 case "OCR_BOX_ALL_PAGE":
                     App.Send(COMMANDS.OCR_BOX_ALL_PAGE, string.Format("{0}", __file.Id));
+                    break;
+                case "OPEN_SETTING":
+                    new fSetting().ShowDialog();
                     break;
                 case "EXIT":
                     this.Close();
