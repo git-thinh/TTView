@@ -118,11 +118,11 @@ namespace TTView
 
                 //Application.Run(m);
                 Application.Run(new fSetting(app, main));
-
-                app.Top = m.Top;
-                app.Left = m.Left;
-                app.Height = m.Height;
-                app.Width = m.Width;
+                if (app.Window == null) app.Window = new oWindow();
+                app.Window.Top = m.Top;
+                app.Window.Left = m.Left;
+                app.Window.Height = m.Height;
+                app.Window.Width = m.Width;
                 app.WriteFile();
 
                 client.Stop();

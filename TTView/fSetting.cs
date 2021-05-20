@@ -18,7 +18,12 @@ namespace TTView
             InitializeComponent();
 
             m_tabs.WindowClosed += (se, ev) => {
+                app.WriteFile();
                 this.Close();
+            };
+            this.Shown += (se, ev) =>
+            {
+                bindSetting();
             };
         }
 
@@ -46,7 +51,7 @@ namespace TTView
         }
 
         private void btnSave_Click(object sender, EventArgs e)
-            => m_app.WriteFile();
+            => __writeSettingChanged();
         
         #endregion
 
@@ -71,6 +76,51 @@ namespace TTView
 
         #endregion
 
+        void bindSetting() {
+            var setting = m_app.Setting;
+
+            ui_checkOnly10PageFirstlyOrAll.Checked = setting.Only10PageFirstlyOrAll;
+            ui_checkViewModeNoBorder.Checked = setting.ViewModeNoBorder;
+            ui_DrawSelectionImageAndWord.Checked = setting.DrawSelectionImageWord;
+            ui_HideToolbarFooter.Checked = setting.HideToolbar;
+            
+            ui_selectOcrEngineMode.SelectedIndex = setting.OcrEngine;
+            ui_selectOcrLanguage.SelectedIndex = setting.OcrLanguage;
+            ui_selectOcrLevel.SelectedIndex = setting.OcrLevel;
+
+            ui_textDpiX.Text = setting.ImageDpiX.ToString();
+            ui_textDpiY.Text = setting.ImageDpiY.ToString();
+
+            ui_txtPathStoreFilePublish.Text = setting.PathStoreFilePublish;
+            ui_txtPathStoreFileRaw.Text = setting.PathStoreFileRaw;
+
+            ui_textDpiX.Text = setting.ImageDpiX.ToString();
+            ui_textDpiY.Text = setting.ImageDpiY.ToString();
+            ui_textMinWidth.Text = setting.ImageMinWidth.ToString();
+            ui_textQuantity.Text = setting.ImageQuantity.ToString();
+        }
+
+        void __writeSettingChanged() {
+            var setting = m_app.Setting;
+            setting.PathStoreFilePublish = ui_txtPathStoreFilePublish.Text.Trim();
+            setting.PathStoreFileRaw = ui_txtPathStoreFileRaw.Text.Trim();
+
+            int dpix = 90;
+            int.TryParse(ui_textDpiX.Text, out dpix);
+            setting.ImageDpiX = dpix;
+            int dpiy = 90;
+            int.TryParse(ui_textDpiY.Text, out dpiy);
+            setting.ImageDpiY = dpiy;
+            int quantity = 50;
+            int.TryParse(ui_textQuantity.Text, out quantity);
+            setting.ImageQuantity = quantity;
+            int minWidth = 1024;
+            int.TryParse(ui_textMinWidth.Text, out minWidth);
+            setting.ImageMinWidth = minWidth;
+
+            m_app.WriteFile();
+        }
+
         void openDialog()
         {
             using (OpenFileDialog d = new OpenFileDialog())
@@ -81,6 +131,85 @@ namespace TTView
                 //if (d.ShowDialog() == DialogResult.OK) tab_Create(d.FileName);
             }
         }
-         
+
+        private void ui_btnPathStoreFileRaw_Click(object sender, EventArgs e)
+        {
+            using (var d = new FolderBrowserDialog())
+            {
+                DialogResult result = d.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(d.SelectedPath))
+                {
+                    ui_txtPathStoreFileRaw.Text = d.SelectedPath;
+                }
+            }
+        }
+
+        private void ui_btnPathStoreFilePublish_Click(object sender, EventArgs e)
+        {
+            using (var d = new FolderBrowserDialog())
+            {
+                DialogResult result = d.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(d.SelectedPath))
+                {
+                    ui_txtPathStoreFilePublish.Text = d.SelectedPath;
+                }
+            }
+        }
+
+        private void ui_selectOcrLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.OcrLanguage = ui_selectOcrLanguage.SelectedIndex;
+        }
+
+        private void ui_selectOcrLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.OcrLevel = ui_selectOcrLevel.SelectedIndex;
+        }
+
+        private void ui_selectOcrEngineMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.OcrEngine = ui_selectOcrEngineMode.SelectedIndex;
+        }
+
+        private void ui_HideToolbarFooter_CheckStateChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.HideToolbar = ui_HideToolbarFooter.Checked;
+        }
+
+        private void ui_checkOnly10PageFirstlyOrAll_CheckedChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.Only10PageFirstlyOrAll = ui_checkOnly10PageFirstlyOrAll.Checked;
+        }
+
+        private void ui_DrawSelectionImageAndWord_CheckStateChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.DrawSelectionImageWord = ui_DrawSelectionImageAndWord.Checked;
+        }
+
+        private void ui_checkViewModeNoBorder_CheckStateChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.ViewModeNoBorder = ui_checkViewModeNoBorder.Checked;
+        }
+
+        private void ui_checkViewModePublish_CheckStateChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.ViewModePublish = ui_checkViewModePublish.Checked;
+        }
+
+        private void ui_checkViewModeMobile_CheckStateChanged(object sender, EventArgs e)
+        {
+            m_app.Setting.ViewModeResponsiveMobile = ui_checkViewModeMobile.Checked;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

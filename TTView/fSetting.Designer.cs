@@ -33,18 +33,20 @@ namespace TTView
             this.m_tabs = new FarsiLibrary.Win.FATabStrip();
             this.m_tabGeneral = new FarsiLibrary.Win.FATabStripItem();
             this.ui_panelGeneral = new System.Windows.Forms.Panel();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.ui_txtPathStoreFilePublish = new System.Windows.Forms.TextBox();
             this.ui_txtPathStoreFileRaw = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ui_checkViewModePublish = new System.Windows.Forms.CheckBox();
+            this.ui_checkViewModeMobile = new System.Windows.Forms.CheckBox();
             this.ui_btnPathStoreFilePublish = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.ui_groupProcessImage = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ui_textMinWidth = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ui_textQuantity = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.ui_textDpiY = new System.Windows.Forms.TextBox();
             this.ui_textDpiX = new System.Windows.Forms.TextBox();
@@ -67,6 +69,12 @@ namespace TTView
             this.panel2 = new System.Windows.Forms.Panel();
             this.m_tabProcessImage = new FarsiLibrary.Win.FATabStripItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ui_textRedisIP = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ui_textRedisPort = new System.Windows.Forms.TextBox();
+            this.ui_textRedisDB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).BeginInit();
             this.m_tabs.SuspendLayout();
             this.m_tabGeneral.SuspendLayout();
@@ -106,6 +114,8 @@ namespace TTView
             // ui_panelGeneral
             // 
             this.ui_panelGeneral.BackColor = System.Drawing.Color.Black;
+            this.ui_panelGeneral.Controls.Add(this.btnUndo);
+            this.ui_panelGeneral.Controls.Add(this.btnApply);
             this.ui_panelGeneral.Controls.Add(this.ui_txtPathStoreFilePublish);
             this.ui_panelGeneral.Controls.Add(this.ui_txtPathStoreFileRaw);
             this.ui_panelGeneral.Controls.Add(this.groupBox1);
@@ -122,9 +132,39 @@ namespace TTView
             this.ui_panelGeneral.Size = new System.Drawing.Size(579, 313);
             this.ui_panelGeneral.TabIndex = 0;
             // 
+            // btnUndo
+            // 
+            this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUndo.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUndo.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnUndo.ForeColor = System.Drawing.Color.White;
+            this.btnUndo.Location = new System.Drawing.Point(90, 286);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(73, 23);
+            this.btnUndo.TabIndex = 18;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = false;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnApply
+            // 
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnApply.Font = new System.Drawing.Font("Arial", 8F);
+            this.btnApply.ForeColor = System.Drawing.Color.White;
+            this.btnApply.Location = new System.Drawing.Point(11, 286);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(73, 23);
+            this.btnApply.TabIndex = 17;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
             // ui_txtPathStoreFilePublish
             // 
-            this.ui_txtPathStoreFilePublish.BackColor = System.Drawing.SystemColors.Info;
+            this.ui_txtPathStoreFilePublish.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_txtPathStoreFilePublish.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_txtPathStoreFilePublish.Font = new System.Drawing.Font("Arial", 8F);
             this.ui_txtPathStoreFilePublish.Location = new System.Drawing.Point(130, 34);
@@ -134,7 +174,7 @@ namespace TTView
             // 
             // ui_txtPathStoreFileRaw
             // 
-            this.ui_txtPathStoreFileRaw.BackColor = System.Drawing.SystemColors.Info;
+            this.ui_txtPathStoreFileRaw.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_txtPathStoreFileRaw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_txtPathStoreFileRaw.Font = new System.Drawing.Font("Arial", 8F);
             this.ui_txtPathStoreFileRaw.Location = new System.Drawing.Point(130, 12);
@@ -145,8 +185,14 @@ namespace TTView
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.ui_textRedisDB);
+            this.groupBox1.Controls.Add(this.ui_textRedisPort);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.ui_textRedisIP);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.ui_checkViewModePublish);
+            this.groupBox1.Controls.Add(this.ui_checkViewModeMobile);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(178, 151);
             this.groupBox1.Name = "groupBox1";
@@ -155,29 +201,31 @@ namespace TTView
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Publish";
             // 
-            // checkBox2
+            // ui_checkViewModePublish
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial", 8F);
-            this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(220, 16);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(118, 18);
-            this.checkBox2.TabIndex = 22;
-            this.checkBox2.Text = "View mode publish";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.ui_checkViewModePublish.AutoSize = true;
+            this.ui_checkViewModePublish.Font = new System.Drawing.Font("Arial", 8F);
+            this.ui_checkViewModePublish.ForeColor = System.Drawing.Color.White;
+            this.ui_checkViewModePublish.Location = new System.Drawing.Point(220, 14);
+            this.ui_checkViewModePublish.Name = "ui_checkViewModePublish";
+            this.ui_checkViewModePublish.Size = new System.Drawing.Size(118, 18);
+            this.ui_checkViewModePublish.TabIndex = 22;
+            this.ui_checkViewModePublish.Text = "View mode publish";
+            this.ui_checkViewModePublish.UseVisualStyleBackColor = true;
+            this.ui_checkViewModePublish.CheckStateChanged += new System.EventHandler(this.ui_checkViewModePublish_CheckStateChanged);
             // 
-            // checkBox1
+            // ui_checkViewModeMobile
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial", 8F);
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(220, 35);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(171, 18);
-            this.checkBox1.TabIndex = 21;
-            this.checkBox1.Text = "View mode responsive mobile";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ui_checkViewModeMobile.AutoSize = true;
+            this.ui_checkViewModeMobile.Font = new System.Drawing.Font("Arial", 8F);
+            this.ui_checkViewModeMobile.ForeColor = System.Drawing.Color.White;
+            this.ui_checkViewModeMobile.Location = new System.Drawing.Point(220, 33);
+            this.ui_checkViewModeMobile.Name = "ui_checkViewModeMobile";
+            this.ui_checkViewModeMobile.Size = new System.Drawing.Size(171, 18);
+            this.ui_checkViewModeMobile.TabIndex = 21;
+            this.ui_checkViewModeMobile.Text = "View mode responsive mobile";
+            this.ui_checkViewModeMobile.UseVisualStyleBackColor = true;
+            this.ui_checkViewModeMobile.CheckStateChanged += new System.EventHandler(this.ui_checkViewModeMobile_CheckStateChanged);
             // 
             // ui_btnPathStoreFilePublish
             // 
@@ -188,6 +236,7 @@ namespace TTView
             this.ui_btnPathStoreFilePublish.TabIndex = 11;
             this.ui_btnPathStoreFilePublish.Text = "...";
             this.ui_btnPathStoreFilePublish.UseVisualStyleBackColor = true;
+            this.ui_btnPathStoreFilePublish.Click += new System.EventHandler(this.ui_btnPathStoreFilePublish_Click);
             // 
             // label2
             // 
@@ -207,7 +256,7 @@ namespace TTView
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnSave.Font = new System.Drawing.Font("Arial", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(495, 286);
             this.btnSave.Name = "btnSave";
@@ -220,9 +269,9 @@ namespace TTView
             // ui_groupProcessImage
             // 
             this.ui_groupProcessImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ui_groupProcessImage.Controls.Add(this.textBox2);
+            this.ui_groupProcessImage.Controls.Add(this.ui_textMinWidth);
             this.ui_groupProcessImage.Controls.Add(this.label9);
-            this.ui_groupProcessImage.Controls.Add(this.textBox1);
+            this.ui_groupProcessImage.Controls.Add(this.ui_textQuantity);
             this.ui_groupProcessImage.Controls.Add(this.label8);
             this.ui_groupProcessImage.Controls.Add(this.ui_textDpiY);
             this.ui_groupProcessImage.Controls.Add(this.ui_textDpiX);
@@ -236,18 +285,18 @@ namespace TTView
             this.ui_groupProcessImage.TabStop = false;
             this.ui_groupProcessImage.Text = "Compress";
             // 
-            // textBox2
+            // ui_textMinWidth
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(73, 94);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(68, 21);
-            this.textBox2.TabIndex = 17;
-            this.textBox2.Text = "1024";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ui_textMinWidth.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textMinWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textMinWidth.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.ui_textMinWidth.ForeColor = System.Drawing.Color.Black;
+            this.ui_textMinWidth.Location = new System.Drawing.Point(73, 94);
+            this.ui_textMinWidth.Name = "ui_textMinWidth";
+            this.ui_textMinWidth.Size = new System.Drawing.Size(68, 21);
+            this.ui_textMinWidth.TabIndex = 17;
+            this.ui_textMinWidth.Text = "1024";
+            this.ui_textMinWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -262,18 +311,18 @@ namespace TTView
             this.label9.Text = "Min Width";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // ui_textQuantity
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(73, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(68, 21);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.Text = "50";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ui_textQuantity.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textQuantity.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.ui_textQuantity.ForeColor = System.Drawing.Color.Black;
+            this.ui_textQuantity.Location = new System.Drawing.Point(73, 70);
+            this.ui_textQuantity.Name = "ui_textQuantity";
+            this.ui_textQuantity.Size = new System.Drawing.Size(68, 21);
+            this.ui_textQuantity.TabIndex = 15;
+            this.ui_textQuantity.Text = "50";
+            this.ui_textQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -290,7 +339,7 @@ namespace TTView
             // 
             // ui_textDpiY
             // 
-            this.ui_textDpiY.BackColor = System.Drawing.SystemColors.Info;
+            this.ui_textDpiY.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_textDpiY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_textDpiY.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.ui_textDpiY.ForeColor = System.Drawing.Color.Black;
@@ -303,7 +352,7 @@ namespace TTView
             // 
             // ui_textDpiX
             // 
-            this.ui_textDpiX.BackColor = System.Drawing.SystemColors.Info;
+            this.ui_textDpiX.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_textDpiX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_textDpiX.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.ui_textDpiX.ForeColor = System.Drawing.Color.Black;
@@ -371,9 +420,11 @@ namespace TTView
             this.ui_checkViewModeNoBorder.TabIndex = 20;
             this.ui_checkViewModeNoBorder.Text = "View mode no border";
             this.ui_checkViewModeNoBorder.UseVisualStyleBackColor = true;
+            this.ui_checkViewModeNoBorder.CheckStateChanged += new System.EventHandler(this.ui_checkViewModeNoBorder_CheckStateChanged);
             // 
             // ui_selectOcrLevel
             // 
+            this.ui_selectOcrLevel.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_selectOcrLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ui_selectOcrLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ui_selectOcrLevel.Font = new System.Drawing.Font("Arial", 9F);
@@ -388,6 +439,7 @@ namespace TTView
             this.ui_selectOcrLevel.Name = "ui_selectOcrLevel";
             this.ui_selectOcrLevel.Size = new System.Drawing.Size(117, 23);
             this.ui_selectOcrLevel.TabIndex = 19;
+            this.ui_selectOcrLevel.SelectedIndexChanged += new System.EventHandler(this.ui_selectOcrLevel_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -404,6 +456,7 @@ namespace TTView
             // 
             // ui_selectOcrEngineMode
             // 
+            this.ui_selectOcrEngineMode.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_selectOcrEngineMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ui_selectOcrEngineMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ui_selectOcrEngineMode.Font = new System.Drawing.Font("Arial", 8F);
@@ -417,6 +470,7 @@ namespace TTView
             this.ui_selectOcrEngineMode.Name = "ui_selectOcrEngineMode";
             this.ui_selectOcrEngineMode.Size = new System.Drawing.Size(308, 22);
             this.ui_selectOcrEngineMode.TabIndex = 17;
+            this.ui_selectOcrEngineMode.SelectedIndexChanged += new System.EventHandler(this.ui_selectOcrEngineMode_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -433,6 +487,7 @@ namespace TTView
             // 
             // ui_selectOcrLanguage
             // 
+            this.ui_selectOcrLanguage.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_selectOcrLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ui_selectOcrLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ui_selectOcrLanguage.Font = new System.Drawing.Font("Arial", 9F);
@@ -444,6 +499,7 @@ namespace TTView
             this.ui_selectOcrLanguage.Name = "ui_selectOcrLanguage";
             this.ui_selectOcrLanguage.Size = new System.Drawing.Size(137, 23);
             this.ui_selectOcrLanguage.TabIndex = 15;
+            this.ui_selectOcrLanguage.SelectedIndexChanged += new System.EventHandler(this.ui_selectOcrLanguage_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -469,6 +525,7 @@ namespace TTView
             this.ui_checkOnly10PageFirstlyOrAll.TabIndex = 9;
             this.ui_checkOnly10PageFirstlyOrAll.Text = "Only 10 pages firstly or all";
             this.ui_checkOnly10PageFirstlyOrAll.UseVisualStyleBackColor = true;
+            this.ui_checkOnly10PageFirstlyOrAll.CheckedChanged += new System.EventHandler(this.ui_checkOnly10PageFirstlyOrAll_CheckedChanged);
             // 
             // ui_HideToolbarFooter
             // 
@@ -481,6 +538,7 @@ namespace TTView
             this.ui_HideToolbarFooter.TabIndex = 0;
             this.ui_HideToolbarFooter.Text = "Hide Toolbar Footer";
             this.ui_HideToolbarFooter.UseVisualStyleBackColor = true;
+            this.ui_HideToolbarFooter.CheckStateChanged += new System.EventHandler(this.ui_HideToolbarFooter_CheckStateChanged);
             // 
             // ui_DrawSelectionImageAndWord
             // 
@@ -493,6 +551,7 @@ namespace TTView
             this.ui_DrawSelectionImageAndWord.TabIndex = 1;
             this.ui_DrawSelectionImageAndWord.Text = "Draw selections image word";
             this.ui_DrawSelectionImageAndWord.UseVisualStyleBackColor = true;
+            this.ui_DrawSelectionImageAndWord.CheckStateChanged += new System.EventHandler(this.ui_DrawSelectionImageAndWord_CheckStateChanged);
             // 
             // ui_btnPathStoreFileRaw
             // 
@@ -503,6 +562,7 @@ namespace TTView
             this.ui_btnPathStoreFileRaw.TabIndex = 4;
             this.ui_btnPathStoreFileRaw.Text = "...";
             this.ui_btnPathStoreFileRaw.UseVisualStyleBackColor = true;
+            this.ui_btnPathStoreFileRaw.Click += new System.EventHandler(this.ui_btnPathStoreFileRaw_Click);
             // 
             // label1
             // 
@@ -554,6 +614,81 @@ namespace TTView
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(798, 429);
             this.panel3.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F);
+            this.label10.ForeColor = System.Drawing.Color.Silver;
+            this.label10.Location = new System.Drawing.Point(14, 19);
+            this.label10.Name = "label10";
+            this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label10.Size = new System.Drawing.Size(64, 22);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Redis IP";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_textRedisIP
+            // 
+            this.ui_textRedisIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisIP.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisIP.Location = new System.Drawing.Point(75, 17);
+            this.ui_textRedisIP.Name = "ui_textRedisIP";
+            this.ui_textRedisIP.Size = new System.Drawing.Size(99, 24);
+            this.ui_textRedisIP.TabIndex = 19;
+            this.ui_textRedisIP.Text = "127.0.0.1";
+            this.ui_textRedisIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F);
+            this.label11.ForeColor = System.Drawing.Color.Silver;
+            this.label11.Location = new System.Drawing.Point(6, 41);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label11.Size = new System.Drawing.Size(71, 22);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Redis Port";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F);
+            this.label12.ForeColor = System.Drawing.Color.Silver;
+            this.label12.Location = new System.Drawing.Point(10, 66);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label12.Size = new System.Drawing.Size(67, 22);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Redis DB";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_textRedisPort
+            // 
+            this.ui_textRedisPort.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisPort.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisPort.Location = new System.Drawing.Point(75, 42);
+            this.ui_textRedisPort.Name = "ui_textRedisPort";
+            this.ui_textRedisPort.Size = new System.Drawing.Size(69, 24);
+            this.ui_textRedisPort.TabIndex = 26;
+            this.ui_textRedisPort.Text = "1000";
+            this.ui_textRedisPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ui_textRedisDB
+            // 
+            this.ui_textRedisDB.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisDB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisDB.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisDB.Location = new System.Drawing.Point(75, 67);
+            this.ui_textRedisDB.Name = "ui_textRedisDB";
+            this.ui_textRedisDB.Size = new System.Drawing.Size(54, 24);
+            this.ui_textRedisDB.TabIndex = 27;
+            this.ui_textRedisDB.Text = "0";
+            this.ui_textRedisDB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fSetting
             // 
@@ -615,13 +750,21 @@ namespace TTView
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox ui_selectOcrLevel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ui_textQuantity;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ui_textMinWidth;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox ui_checkViewModeNoBorder;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ui_checkViewModePublish;
+        private System.Windows.Forms.CheckBox ui_checkViewModeMobile;
+        private System.Windows.Forms.Button btnUndo;
+        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.TextBox ui_textRedisIP;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox ui_textRedisDB;
+        private System.Windows.Forms.TextBox ui_textRedisPort;
     }
 }

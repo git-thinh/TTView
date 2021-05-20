@@ -50,10 +50,10 @@ namespace TTView
 
         void main_initUI(object sender, EventArgs e)
         {
-            this.Top = m_app.Top;
-            this.Left = m_app.Left;
-            this.Width = m_app.Width;
-            this.Height = m_app.Height;
+            this.Top = m_app.Window.Top;
+            this.Left = m_app.Window.Left;
+            this.Width = m_app.Window.Width;
+            this.Height = m_app.Window.Height;
 
             m_tabs = new FATabStrip()
             {
@@ -389,11 +389,11 @@ namespace TTView
                     break;
                 case "SETTING_AUTO_RESIZE":
                     menu.Checked = !menu.Checked;
-                    m_app.Setting.AutoResize = menu.Checked;
+                    //m_app.Setting.AutoResize = menu.Checked;
                     break;
                 case "SETTING_OPEN_ALL_|_10":
                     menu.Checked = !menu.Checked;
-                    m_app.Setting.OpenAllOr10 = menu.Checked;
+                    m_app.Setting.Only10PageFirstlyOrAll = menu.Checked;
                     break;
                 case "SETTING_HIDE_TOOLBAR":
                     menu.Checked = !menu.Checked;
@@ -492,12 +492,12 @@ namespace TTView
             };
             ls.SelectedIndexChanged += (se, ev) =>
             {
-                if (ls.SelectedIndex == -1) return;
-                var fi = m_app.Files[ls.SelectedIndex];
-                tab_Create(fi.File);
-                fm.Close();
+                //if (ls.SelectedIndex == -1) return;
+                //var fi = m_app.Files[ls.SelectedIndex];
+                //tab_Create(fi.File);
+                //fm.Close();
             };
-            foreach (var fo in m_app.Files) ls.Items.Add(Path.GetFileNameWithoutExtension(fo.File));
+            //foreach (var fo in m_app.Files) ls.Items.Add(Path.GetFileNameWithoutExtension(fo.File));
             fm.Controls.Add(ls);
             fm.ShowDialog();
         }
@@ -524,7 +524,9 @@ namespace TTView
         }
 
         oFile _getFile(string file)
-            => m_app.Files.Where(x => x.File == file).Take(1).SingleOrDefault();
+        {
+            return null;
+        }
 
         oFile _updateInfoFile(string file, long docId, int pageTotal)
         {
@@ -532,7 +534,7 @@ namespace TTView
             if (fi == null)
             {
                 fi = new oFile() { File = file, PageTotal = pageTotal, Id = docId };
-                m_app.Files.Add(fi);
+                //m_app.Files.Add(fi);
             }
             else
             {
@@ -561,7 +563,7 @@ namespace TTView
             if (fi == null)
             {
                 fi = new oFile() { File = file };
-                m_app.Files.Add(fi);
+                //m_app.Files.Add(fi);
             }
 
             if (m_tabs.SelectedItem != null && m_tabs.SelectedItem.Tag.ToString() == file) return;
@@ -633,11 +635,9 @@ namespace TTView
                         string.Format("{0}-{1}.{2}", page + 1, __file.PageTotal,
                         Path.GetFileNameWithoutExtension(__file.File));
 
-                    if (m_app.Setting.AutoResize)
-                    {
-                        __image.Width = img.Width;
-                        __image.Height = img.Height;
-                    }
+                    __image.Width = img.Width;
+                    __image.Height = img.Height;
+
                     using (var ms = new MemoryStream())
                     {
                         img.Save(ms, ImageFormat.Jpeg);

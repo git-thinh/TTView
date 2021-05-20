@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace TTView
 {
-
     public interface IMain
     {
         void _requestReply(string requestId, COMMANDS cmd, string input, Dictionary<string, object> data);
+    }
+
+    public class oWindow
+    {
+        public int Top { set; get; }
+        public int Left { set; get; }
+        public int Width { set; get; }
+        public int Height { set; get; }
     }
 
     public class oFile
@@ -21,31 +26,36 @@ namespace TTView
 
     public class oSetting
     {
-        public bool AutoResize { set; get; }
-        public bool OpenAllOr10 { set; get; }
-        public string Directory { set; get; }
-        public bool HideToolbar { set; get; }
-    }
+        public string PathStoreFileRaw { set; get; }
+        public string PathStoreFilePublish { set; get; }
 
-    public class oWindow
-    {
-        public int Top { set; get; }
-        public int Left { set; get; }
-        public int Width { set; get; }
-        public int Height { set; get; }
+        public int OcrLanguage { set; get; }
+        public int OcrLevel { set; get; }
+        public int OcrEngine { set; get; }
+
+        public int ImageDpiX { set; get; }
+        public int ImageDpiY { set; get; }
+        public int ImageQuantity { set; get; }
+        public int ImageMinWidth { set; get; }
+
+        public bool HideToolbar { set; get; }
+        public bool Only10PageFirstlyOrAll { set; get; }
+        public bool DrawSelectionImageWord { set; get; }
+        public bool ViewModeNoBorder { set; get; }
+        public bool ViewModePublish { set; get; }
+        public bool ViewModeResponsiveMobile { set; get; }
     }
 
     public class oApp
     {
         public oFile FileCurrent { set; get; }
-        public List<oFile> Files { set; get; }
         public oSetting Setting { set; get; }
         public oWindow Window { set; get; }
         public oApp()
         {
             this.FileCurrent = new oFile();
-            this.Files = new List<oFile>();
             this.Setting = new oSetting();
+            this.Window = new oWindow();
         }
 
         public void WriteFile()
