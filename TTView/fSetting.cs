@@ -98,6 +98,10 @@ namespace TTView
             ui_textDpiY.Text = setting.ImageDpiY.ToString();
             ui_textMinWidth.Text = setting.ImageMinWidth.ToString();
             ui_textQuantity.Text = setting.ImageQuantity.ToString();
+
+            ui_textRedisIP.Text = m_app.Redis.Host;
+            ui_textRedisDB.Text = m_app.Redis.Db.ToString();
+            ui_textRedisPort.Text = m_app.Redis.Port.ToString();
         }
 
         void __writeSettingChanged() {
@@ -117,6 +121,14 @@ namespace TTView
             int minWidth = 1024;
             int.TryParse(ui_textMinWidth.Text, out minWidth);
             setting.ImageMinWidth = minWidth;
+
+            int port = 1000;
+            int.TryParse(ui_textRedisPort.Text, out port);
+            m_app.Redis.Port = port;
+            int db = 0;
+            int.TryParse(ui_textRedisDB.Text, out db);
+            m_app.Redis.Db = db;
+            m_app.Redis.Host = ui_textRedisIP.Text.Trim();
 
             m_app.WriteFile();
         }
@@ -202,11 +214,6 @@ namespace TTView
         }
 
         private void btnApply_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUndo_Click(object sender, EventArgs e)
         {
 
         }

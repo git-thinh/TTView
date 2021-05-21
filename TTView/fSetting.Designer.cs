@@ -33,11 +33,16 @@ namespace TTView
             this.m_tabs = new FarsiLibrary.Win.FATabStrip();
             this.m_tabGeneral = new FarsiLibrary.Win.FATabStripItem();
             this.ui_panelGeneral = new System.Windows.Forms.Panel();
-            this.btnUndo = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.ui_txtPathStoreFilePublish = new System.Windows.Forms.TextBox();
             this.ui_txtPathStoreFileRaw = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ui_textRedisDB = new System.Windows.Forms.TextBox();
+            this.ui_textRedisPort = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ui_textRedisIP = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.ui_checkViewModePublish = new System.Windows.Forms.CheckBox();
             this.ui_checkViewModeMobile = new System.Windows.Forms.CheckBox();
             this.ui_btnPathStoreFilePublish = new System.Windows.Forms.Button();
@@ -69,12 +74,13 @@ namespace TTView
             this.panel2 = new System.Windows.Forms.Panel();
             this.m_tabProcessImage = new FarsiLibrary.Win.FATabStripItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ui_textRedisIP = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ui_textRedisPort = new System.Windows.Forms.TextBox();
-            this.ui_textRedisDB = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).BeginInit();
             this.m_tabs.SuspendLayout();
             this.m_tabGeneral.SuspendLayout();
@@ -84,6 +90,7 @@ namespace TTView
             this.ui_groupOCR.SuspendLayout();
             this.m_tabOcr.SuspendLayout();
             this.m_tabProcessImage.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_tabs
@@ -114,7 +121,7 @@ namespace TTView
             // ui_panelGeneral
             // 
             this.ui_panelGeneral.BackColor = System.Drawing.Color.Black;
-            this.ui_panelGeneral.Controls.Add(this.btnUndo);
+            this.ui_panelGeneral.Controls.Add(this.groupBox2);
             this.ui_panelGeneral.Controls.Add(this.btnApply);
             this.ui_panelGeneral.Controls.Add(this.ui_txtPathStoreFilePublish);
             this.ui_panelGeneral.Controls.Add(this.ui_txtPathStoreFileRaw);
@@ -132,21 +139,6 @@ namespace TTView
             this.ui_panelGeneral.Size = new System.Drawing.Size(579, 313);
             this.ui_panelGeneral.TabIndex = 0;
             // 
-            // btnUndo
-            // 
-            this.btnUndo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUndo.BackColor = System.Drawing.SystemColors.Highlight;
-            this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUndo.Font = new System.Drawing.Font("Arial", 8F);
-            this.btnUndo.ForeColor = System.Drawing.Color.White;
-            this.btnUndo.Location = new System.Drawing.Point(90, 286);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(73, 23);
-            this.btnUndo.TabIndex = 18;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = false;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -154,9 +146,9 @@ namespace TTView
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Arial", 8F);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(11, 286);
+            this.btnApply.Location = new System.Drawing.Point(11, 282);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(73, 23);
+            this.btnApply.Size = new System.Drawing.Size(60, 23);
             this.btnApply.TabIndex = 17;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = false;
@@ -187,19 +179,94 @@ namespace TTView
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.ui_textRedisDB);
             this.groupBox1.Controls.Add(this.ui_textRedisPort);
+            this.groupBox1.Controls.Add(this.ui_textRedisIP);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.ui_textRedisIP);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.ui_checkViewModePublish);
             this.groupBox1.Controls.Add(this.ui_checkViewModeMobile);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(178, 151);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 129);
+            this.groupBox1.Size = new System.Drawing.Size(392, 74);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Publish";
+            // 
+            // ui_textRedisDB
+            // 
+            this.ui_textRedisDB.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisDB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisDB.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisDB.Location = new System.Drawing.Point(160, 42);
+            this.ui_textRedisDB.Name = "ui_textRedisDB";
+            this.ui_textRedisDB.Size = new System.Drawing.Size(53, 24);
+            this.ui_textRedisDB.TabIndex = 27;
+            this.ui_textRedisDB.Text = "0";
+            this.ui_textRedisDB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ui_textRedisPort
+            // 
+            this.ui_textRedisPort.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisPort.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisPort.Location = new System.Drawing.Point(56, 42);
+            this.ui_textRedisPort.Name = "ui_textRedisPort";
+            this.ui_textRedisPort.Size = new System.Drawing.Size(78, 24);
+            this.ui_textRedisPort.TabIndex = 26;
+            this.ui_textRedisPort.Text = "1000";
+            this.ui_textRedisPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial", 9F);
+            this.label12.ForeColor = System.Drawing.Color.Silver;
+            this.label12.Location = new System.Drawing.Point(134, 44);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label12.Size = new System.Drawing.Size(32, 22);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Db";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Arial", 9F);
+            this.label11.ForeColor = System.Drawing.Color.Silver;
+            this.label11.Location = new System.Drawing.Point(26, 41);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label11.Size = new System.Drawing.Size(36, 22);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Port";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_textRedisIP
+            // 
+            this.ui_textRedisIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisIP.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisIP.Location = new System.Drawing.Point(56, 17);
+            this.ui_textRedisIP.Name = "ui_textRedisIP";
+            this.ui_textRedisIP.Size = new System.Drawing.Size(157, 24);
+            this.ui_textRedisIP.TabIndex = 19;
+            this.ui_textRedisIP.Text = "127.0.0.1";
+            this.ui_textRedisIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F);
+            this.label10.ForeColor = System.Drawing.Color.Silver;
+            this.label10.Location = new System.Drawing.Point(0, 19);
+            this.label10.Name = "label10";
+            this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label10.Size = new System.Drawing.Size(63, 22);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Redis IP";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ui_checkViewModePublish
             // 
@@ -258,9 +325,9 @@ namespace TTView
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(495, 286);
+            this.btnSave.Location = new System.Drawing.Point(76, 282);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(73, 23);
+            this.btnSave.Size = new System.Drawing.Size(96, 23);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -280,7 +347,7 @@ namespace TTView
             this.ui_groupProcessImage.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ui_groupProcessImage.Location = new System.Drawing.Point(10, 151);
             this.ui_groupProcessImage.Name = "ui_groupProcessImage";
-            this.ui_groupProcessImage.Size = new System.Drawing.Size(163, 130);
+            this.ui_groupProcessImage.Size = new System.Drawing.Size(163, 125);
             this.ui_groupProcessImage.TabIndex = 6;
             this.ui_groupProcessImage.TabStop = false;
             this.ui_groupProcessImage.Text = "Compress";
@@ -615,80 +682,102 @@ namespace TTView
             this.panel3.Size = new System.Drawing.Size(798, 429);
             this.panel3.TabIndex = 1;
             // 
-            // label10
+            // groupBox2
             // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F);
-            this.label10.ForeColor = System.Drawing.Color.Silver;
-            this.label10.Location = new System.Drawing.Point(14, 19);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label10.Size = new System.Drawing.Size(64, 22);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Redis IP";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox2.Location = new System.Drawing.Point(178, 227);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(392, 82);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Image Process";
             // 
-            // ui_textRedisIP
+            // comboBox1
             // 
-            this.ui_textRedisIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_textRedisIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisIP.Font = new System.Drawing.Font("Arial", 11F);
-            this.ui_textRedisIP.Location = new System.Drawing.Point(75, 17);
-            this.ui_textRedisIP.Name = "ui_textRedisIP";
-            this.ui_textRedisIP.Size = new System.Drawing.Size(99, 24);
-            this.ui_textRedisIP.TabIndex = 19;
-            this.ui_textRedisIP.Text = "127.0.0.1";
-            this.ui_textRedisIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 8F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Only the legacy tesseract OCR engine is used",
+            "Only the new LSTM-based OCR engine is used",
+            "Both the legacy and new LSTM based OCR engine is used",
+            "Default OCR engine is used(currently LSTM-ased OCR engine)"});
+            this.comboBox1.Location = new System.Drawing.Point(54, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(331, 22);
+            this.comboBox1.TabIndex = 18;
             // 
-            // label11
+            // textBox1
             // 
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F);
-            this.label11.ForeColor = System.Drawing.Color.Silver;
-            this.label11.Location = new System.Drawing.Point(6, 41);
-            this.label11.Name = "label11";
-            this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label11.Size = new System.Drawing.Size(71, 22);
-            this.label11.TabIndex = 24;
-            this.label11.Text = "Redis Port";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 11F);
+            this.textBox1.Location = new System.Drawing.Point(332, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(53, 24);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label12
+            // textBox2
             // 
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F);
-            this.label12.ForeColor = System.Drawing.Color.Silver;
-            this.label12.Location = new System.Drawing.Point(10, 66);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label12.Size = new System.Drawing.Size(67, 22);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "Redis DB";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Arial", 11F);
+            this.textBox2.Location = new System.Drawing.Point(228, 47);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(78, 24);
+            this.textBox2.TabIndex = 30;
+            this.textBox2.Text = "1000";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ui_textRedisPort
+            // label13
             // 
-            this.ui_textRedisPort.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_textRedisPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisPort.Font = new System.Drawing.Font("Arial", 11F);
-            this.ui_textRedisPort.Location = new System.Drawing.Point(75, 42);
-            this.ui_textRedisPort.Name = "ui_textRedisPort";
-            this.ui_textRedisPort.Size = new System.Drawing.Size(69, 24);
-            this.ui_textRedisPort.TabIndex = 26;
-            this.ui_textRedisPort.Text = "1000";
-            this.ui_textRedisPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 9F);
+            this.label13.ForeColor = System.Drawing.Color.Silver;
+            this.label13.Location = new System.Drawing.Point(306, 48);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label13.Size = new System.Drawing.Size(32, 22);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Db";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ui_textRedisDB
+            // label14
             // 
-            this.ui_textRedisDB.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_textRedisDB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisDB.Font = new System.Drawing.Font("Arial", 11F);
-            this.ui_textRedisDB.Location = new System.Drawing.Point(75, 67);
-            this.ui_textRedisDB.Name = "ui_textRedisDB";
-            this.ui_textRedisDB.Size = new System.Drawing.Size(54, 24);
-            this.ui_textRedisDB.TabIndex = 27;
-            this.ui_textRedisDB.Text = "0";
-            this.ui_textRedisDB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F);
+            this.label14.ForeColor = System.Drawing.Color.Silver;
+            this.label14.Location = new System.Drawing.Point(196, 47);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label14.Size = new System.Drawing.Size(36, 22);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Port";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 9F);
+            this.label15.ForeColor = System.Drawing.Color.Silver;
+            this.label15.Location = new System.Drawing.Point(11, 18);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label15.Size = new System.Drawing.Size(48, 22);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Name";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // fSetting
             // 
@@ -715,6 +804,8 @@ namespace TTView
             this.ui_groupOCR.PerformLayout();
             this.m_tabOcr.ResumeLayout(false);
             this.m_tabProcessImage.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -758,7 +849,6 @@ namespace TTView
         private System.Windows.Forms.CheckBox ui_checkViewModeNoBorder;
         private System.Windows.Forms.CheckBox ui_checkViewModePublish;
         private System.Windows.Forms.CheckBox ui_checkViewModeMobile;
-        private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.TextBox ui_textRedisIP;
         private System.Windows.Forms.Label label10;
@@ -766,5 +856,12 @@ namespace TTView
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox ui_textRedisDB;
         private System.Windows.Forms.TextBox ui_textRedisPort;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

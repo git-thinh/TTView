@@ -16,6 +16,18 @@ namespace TTView
         public int Height { set; get; }
     }
 
+    public class oRedis
+    {
+        public string Host { set; get; }
+        public int Port { set; get; }
+        public int Db { set; get; }
+        public oRedis() {
+            Host = "127.0.0.1";
+            Port = 1000;
+            Db = 0;
+        }
+    }
+
     public class oFile
     {
         public long Id { set; get; }
@@ -51,11 +63,13 @@ namespace TTView
         public oFile FileCurrent { set; get; }
         public oSetting Setting { set; get; }
         public oWindow Window { set; get; }
+        public oRedis Redis { set; get; }
         public oApp()
         {
             this.FileCurrent = new oFile();
             this.Setting = new oSetting();
             this.Window = new oWindow();
+            this.Redis = new oRedis();
         }
 
         public void WriteFile()
