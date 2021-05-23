@@ -31,17 +31,24 @@ namespace TTView
         {
             this.components = new System.ComponentModel.Container();
             this.m_tabs = new FarsiLibrary.Win.FATabStrip();
-            this.m_tabGeneral = new FarsiLibrary.Win.FATabStripItem();
+            this.ui_tabOCR = new FarsiLibrary.Win.FATabStripItem();
             this.ui_panelGeneral = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnApply = new System.Windows.Forms.Button();
             this.ui_txtPathStoreFilePublish = new System.Windows.Forms.TextBox();
             this.ui_txtPathStoreFileRaw = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ui_textRedisDB = new System.Windows.Forms.TextBox();
             this.ui_textRedisPort = new System.Windows.Forms.TextBox();
+            this.ui_textRedisIP = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.ui_textRedisIP = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ui_checkViewModePublish = new System.Windows.Forms.CheckBox();
             this.ui_checkViewModeMobile = new System.Windows.Forms.CheckBox();
@@ -70,27 +77,46 @@ namespace TTView
             this.ui_DrawSelectionImageAndWord = new System.Windows.Forms.CheckBox();
             this.ui_btnPathStoreFileRaw = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.ui_tabCMS = new FarsiLibrary.Win.FATabStripItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.m_tabOcr = new FarsiLibrary.Win.FATabStripItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.m_tabProcessImage = new FarsiLibrary.Win.FATabStripItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ui_cmsIP = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ui_cmsPassword = new System.Windows.Forms.TextBox();
+            this.ui_cmsUsername = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.ui_cmsSite = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.ui_cmsSearchArticle = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ui_cmsTotalArticle = new System.Windows.Forms.Label();
+            this.ui_gridAticle = new System.Windows.Forms.DataGridView();
+            this.ui_treeArticle = new System.Windows.Forms.TreeView();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.ui_btnCmsCategoryAdd = new System.Windows.Forms.Button();
+            this.ui_btnCmsCategoryRename = new System.Windows.Forms.Button();
+            this.ui_btnCmsCategoryMoveArticle = new System.Windows.Forms.Button();
+            this.ui_btnCmsOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).BeginInit();
             this.m_tabs.SuspendLayout();
-            this.m_tabGeneral.SuspendLayout();
+            this.ui_tabOCR.SuspendLayout();
             this.ui_panelGeneral.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.ui_groupProcessImage.SuspendLayout();
             this.ui_groupOCR.SuspendLayout();
+            this.ui_tabCMS.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.m_tabOcr.SuspendLayout();
             this.m_tabProcessImage.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).BeginInit();
             this.SuspendLayout();
             // 
             // m_tabs
@@ -99,24 +125,24 @@ namespace TTView
             this.m_tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_tabs.Font = new System.Drawing.Font("Arial", 11F);
             this.m_tabs.Items.AddRange(new FarsiLibrary.Win.FATabStripItem[] {
-            this.m_tabGeneral});
+            this.ui_tabOCR,
+            this.ui_tabCMS});
             this.m_tabs.Location = new System.Drawing.Point(0, 0);
             this.m_tabs.Name = "m_tabs";
-            this.m_tabs.SelectedItem = this.m_tabGeneral;
+            this.m_tabs.SelectedItem = this.ui_tabCMS;
             this.m_tabs.Size = new System.Drawing.Size(581, 335);
             this.m_tabs.TabIndex = 0;
             this.m_tabs.Text = "faTabStrip1";
             // 
-            // m_tabGeneral
+            // ui_tabOCR
             // 
-            this.m_tabGeneral.CanClose = false;
-            this.m_tabGeneral.Controls.Add(this.ui_panelGeneral);
-            this.m_tabGeneral.IsDrawn = true;
-            this.m_tabGeneral.Name = "m_tabGeneral";
-            this.m_tabGeneral.Selected = true;
-            this.m_tabGeneral.Size = new System.Drawing.Size(579, 313);
-            this.m_tabGeneral.TabIndex = 0;
-            this.m_tabGeneral.Title = "SETTING";
+            this.ui_tabOCR.CanClose = false;
+            this.ui_tabOCR.Controls.Add(this.ui_panelGeneral);
+            this.ui_tabOCR.IsDrawn = true;
+            this.ui_tabOCR.Name = "ui_tabOCR";
+            this.ui_tabOCR.Size = new System.Drawing.Size(579, 313);
+            this.ui_tabOCR.TabIndex = 0;
+            this.ui_tabOCR.Title = "OCR";
             // 
             // ui_panelGeneral
             // 
@@ -138,6 +164,104 @@ namespace TTView
             this.ui_panelGeneral.Name = "ui_panelGeneral";
             this.ui_panelGeneral.Size = new System.Drawing.Size(579, 313);
             this.ui_panelGeneral.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 9F);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.groupBox2.Location = new System.Drawing.Point(178, 227);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(392, 82);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Image Process";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Only the legacy tesseract OCR engine is used",
+            "Only the new LSTM-based OCR engine is used",
+            "Both the legacy and new LSTM based OCR engine is used",
+            "Default OCR engine is used(currently LSTM-ased OCR engine)"});
+            this.comboBox1.Location = new System.Drawing.Point(53, 22);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(331, 22);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial", 9F);
+            this.label15.ForeColor = System.Drawing.Color.Silver;
+            this.label15.Location = new System.Drawing.Point(11, 22);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label15.Size = new System.Drawing.Size(48, 22);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Name";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(332, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(53, 22);
+            this.textBox1.TabIndex = 31;
+            this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(228, 47);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(78, 22);
+            this.textBox2.TabIndex = 30;
+            this.textBox2.Text = "1000";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 9F);
+            this.label13.ForeColor = System.Drawing.Color.Silver;
+            this.label13.Location = new System.Drawing.Point(306, 48);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label13.Size = new System.Drawing.Size(32, 22);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Db";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial", 9F);
+            this.label14.ForeColor = System.Drawing.Color.Silver;
+            this.label14.Location = new System.Drawing.Point(196, 47);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label14.Size = new System.Drawing.Size(36, 22);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Port";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnApply
             // 
@@ -185,6 +309,7 @@ namespace TTView
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.ui_checkViewModePublish);
             this.groupBox1.Controls.Add(this.ui_checkViewModeMobile);
+            this.groupBox1.Font = new System.Drawing.Font("Arial", 9F);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox1.Location = new System.Drawing.Point(178, 151);
             this.groupBox1.Name = "groupBox1";
@@ -197,10 +322,10 @@ namespace TTView
             // 
             this.ui_textRedisDB.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_textRedisDB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisDB.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisDB.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ui_textRedisDB.Location = new System.Drawing.Point(160, 42);
             this.ui_textRedisDB.Name = "ui_textRedisDB";
-            this.ui_textRedisDB.Size = new System.Drawing.Size(53, 24);
+            this.ui_textRedisDB.Size = new System.Drawing.Size(53, 22);
             this.ui_textRedisDB.TabIndex = 27;
             this.ui_textRedisDB.Text = "0";
             this.ui_textRedisDB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -209,13 +334,25 @@ namespace TTView
             // 
             this.ui_textRedisPort.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_textRedisPort.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisPort.Font = new System.Drawing.Font("Arial", 11F);
+            this.ui_textRedisPort.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ui_textRedisPort.Location = new System.Drawing.Point(56, 42);
             this.ui_textRedisPort.Name = "ui_textRedisPort";
-            this.ui_textRedisPort.Size = new System.Drawing.Size(78, 24);
+            this.ui_textRedisPort.Size = new System.Drawing.Size(78, 22);
             this.ui_textRedisPort.TabIndex = 26;
             this.ui_textRedisPort.Text = "1000";
             this.ui_textRedisPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ui_textRedisIP
+            // 
+            this.ui_textRedisIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_textRedisIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_textRedisIP.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_textRedisIP.Location = new System.Drawing.Point(56, 17);
+            this.ui_textRedisIP.Name = "ui_textRedisIP";
+            this.ui_textRedisIP.Size = new System.Drawing.Size(157, 22);
+            this.ui_textRedisIP.TabIndex = 19;
+            this.ui_textRedisIP.Text = "127.0.0.1";
+            this.ui_textRedisIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -242,18 +379,6 @@ namespace TTView
             this.label11.TabIndex = 24;
             this.label11.Text = "Port";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ui_textRedisIP
-            // 
-            this.ui_textRedisIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_textRedisIP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_textRedisIP.Font = new System.Drawing.Font("Arial", 11F);
-            this.ui_textRedisIP.Location = new System.Drawing.Point(56, 17);
-            this.ui_textRedisIP.Name = "ui_textRedisIP";
-            this.ui_textRedisIP.Size = new System.Drawing.Size(157, 24);
-            this.ui_textRedisIP.TabIndex = 19;
-            this.ui_textRedisIP.Text = "127.0.0.1";
-            this.ui_textRedisIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -344,6 +469,7 @@ namespace TTView
             this.ui_groupProcessImage.Controls.Add(this.ui_textDpiX);
             this.ui_groupProcessImage.Controls.Add(this.label3);
             this.ui_groupProcessImage.Controls.Add(this.label4);
+            this.ui_groupProcessImage.Font = new System.Drawing.Font("Arial", 9F);
             this.ui_groupProcessImage.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ui_groupProcessImage.Location = new System.Drawing.Point(10, 151);
             this.ui_groupProcessImage.Name = "ui_groupProcessImage";
@@ -468,6 +594,7 @@ namespace TTView
             this.ui_groupOCR.Controls.Add(this.ui_checkOnly10PageFirstlyOrAll);
             this.ui_groupOCR.Controls.Add(this.ui_HideToolbarFooter);
             this.ui_groupOCR.Controls.Add(this.ui_DrawSelectionImageAndWord);
+            this.ui_groupOCR.Font = new System.Drawing.Font("Arial", 9F);
             this.ui_groupOCR.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ui_groupOCR.Location = new System.Drawing.Point(10, 60);
             this.ui_groupOCR.Name = "ui_groupOCR";
@@ -502,7 +629,7 @@ namespace TTView
             "TextLine",
             "Word",
             "Symbol"});
-            this.ui_selectOcrLevel.Location = new System.Drawing.Point(264, 20);
+            this.ui_selectOcrLevel.Location = new System.Drawing.Point(264, 22);
             this.ui_selectOcrLevel.Name = "ui_selectOcrLevel";
             this.ui_selectOcrLevel.Size = new System.Drawing.Size(117, 23);
             this.ui_selectOcrLevel.TabIndex = 19;
@@ -513,7 +640,7 @@ namespace TTView
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Arial", 9F);
             this.label7.ForeColor = System.Drawing.Color.Silver;
-            this.label7.Location = new System.Drawing.Point(224, 20);
+            this.label7.Location = new System.Drawing.Point(224, 22);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.label7.Size = new System.Drawing.Size(42, 22);
@@ -533,7 +660,7 @@ namespace TTView
             "Only the new LSTM-based OCR engine is used",
             "Both the legacy and new LSTM based OCR engine is used",
             "Default OCR engine is used(currently LSTM-ased OCR engine)"});
-            this.ui_selectOcrEngineMode.Location = new System.Drawing.Point(73, 51);
+            this.ui_selectOcrEngineMode.Location = new System.Drawing.Point(73, 50);
             this.ui_selectOcrEngineMode.Name = "ui_selectOcrEngineMode";
             this.ui_selectOcrEngineMode.Size = new System.Drawing.Size(308, 22);
             this.ui_selectOcrEngineMode.TabIndex = 17;
@@ -544,7 +671,7 @@ namespace TTView
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial", 9F);
             this.label6.ForeColor = System.Drawing.Color.Silver;
-            this.label6.Location = new System.Drawing.Point(21, 50);
+            this.label6.Location = new System.Drawing.Point(21, 49);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.label6.Size = new System.Drawing.Size(54, 22);
@@ -562,7 +689,7 @@ namespace TTView
             this.ui_selectOcrLanguage.Items.AddRange(new object[] {
             "English",
             "Vietnamese"});
-            this.ui_selectOcrLanguage.Location = new System.Drawing.Point(73, 20);
+            this.ui_selectOcrLanguage.Location = new System.Drawing.Point(73, 22);
             this.ui_selectOcrLanguage.Name = "ui_selectOcrLanguage";
             this.ui_selectOcrLanguage.Size = new System.Drawing.Size(137, 23);
             this.ui_selectOcrLanguage.TabIndex = 15;
@@ -573,7 +700,7 @@ namespace TTView
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 9F);
             this.label5.ForeColor = System.Drawing.Color.Silver;
-            this.label5.Location = new System.Drawing.Point(7, 20);
+            this.label5.Location = new System.Drawing.Point(7, 22);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.label5.Size = new System.Drawing.Size(68, 22);
@@ -644,6 +771,29 @@ namespace TTView
             this.label1.Text = "Path Store File Raw";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // ui_tabCMS
+            // 
+            this.ui_tabCMS.Controls.Add(this.panel1);
+            this.ui_tabCMS.IsDrawn = true;
+            this.ui_tabCMS.Name = "ui_tabCMS";
+            this.ui_tabCMS.Selected = true;
+            this.ui_tabCMS.Size = new System.Drawing.Size(579, 313);
+            this.ui_tabCMS.TabIndex = 1;
+            this.ui_tabCMS.Title = "CMS";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.ui_gridAticle);
+            this.panel1.Controls.Add(this.splitter1);
+            this.panel1.Controls.Add(this.ui_treeArticle);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(579, 313);
+            this.panel1.TabIndex = 0;
+            // 
             // m_tabOcr
             // 
             this.m_tabOcr.CanClose = false;
@@ -682,102 +832,260 @@ namespace TTView
             this.panel3.Size = new System.Drawing.Size(798, 429);
             this.panel3.TabIndex = 1;
             // 
-            // groupBox2
+            // ui_cmsIP
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox2.Location = new System.Drawing.Point(178, 227);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 82);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Image Process";
+            this.ui_cmsIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ui_cmsIP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ui_cmsIP.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsIP.FormattingEnabled = true;
+            this.ui_cmsIP.Items.AddRange(new object[] {
+            "103.130.215.181"});
+            this.ui_cmsIP.Location = new System.Drawing.Point(25, 6);
+            this.ui_cmsIP.Name = "ui_cmsIP";
+            this.ui_cmsIP.Size = new System.Drawing.Size(130, 22);
+            this.ui_cmsIP.TabIndex = 18;
             // 
-            // comboBox1
+            // label16
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 8F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Only the legacy tesseract OCR engine is used",
-            "Only the new LSTM-based OCR engine is used",
-            "Both the legacy and new LSTM based OCR engine is used",
-            "Default OCR engine is used(currently LSTM-ased OCR engine)"});
-            this.comboBox1.Location = new System.Drawing.Point(54, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(331, 22);
-            this.comboBox1.TabIndex = 18;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial", 9F);
+            this.label16.ForeColor = System.Drawing.Color.Silver;
+            this.label16.Location = new System.Drawing.Point(6, 6);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label16.Size = new System.Drawing.Size(23, 22);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "IP";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // ui_cmsPassword
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 11F);
-            this.textBox1.Location = new System.Drawing.Point(332, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(53, 24);
-            this.textBox1.TabIndex = 31;
-            this.textBox1.Text = "0";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ui_cmsPassword.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_cmsPassword.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsPassword.Location = new System.Drawing.Point(285, 6);
+            this.ui_cmsPassword.Name = "ui_cmsPassword";
+            this.ui_cmsPassword.PasswordChar = '*';
+            this.ui_cmsPassword.Size = new System.Drawing.Size(73, 22);
+            this.ui_cmsPassword.TabIndex = 31;
+            this.ui_cmsPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // ui_cmsUsername
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 11F);
-            this.textBox2.Location = new System.Drawing.Point(228, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(78, 24);
-            this.textBox2.TabIndex = 30;
-            this.textBox2.Text = "1000";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ui_cmsUsername.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_cmsUsername.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsUsername.Location = new System.Drawing.Point(191, 6);
+            this.ui_cmsUsername.Name = "ui_cmsUsername";
+            this.ui_cmsUsername.Size = new System.Drawing.Size(54, 22);
+            this.ui_cmsUsername.TabIndex = 30;
+            this.ui_cmsUsername.Text = "root";
+            this.ui_cmsUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // label17
             // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 9F);
-            this.label13.ForeColor = System.Drawing.Color.Silver;
-            this.label13.Location = new System.Drawing.Point(306, 48);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label13.Size = new System.Drawing.Size(32, 22);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "Db";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F);
+            this.label17.ForeColor = System.Drawing.Color.Silver;
+            this.label17.Location = new System.Drawing.Point(247, 5);
+            this.label17.Name = "label17";
+            this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label17.Size = new System.Drawing.Size(42, 22);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Pass";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label14
+            // label18
             // 
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F);
-            this.label14.ForeColor = System.Drawing.Color.Silver;
-            this.label14.Location = new System.Drawing.Point(196, 47);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label14.Size = new System.Drawing.Size(36, 22);
-            this.label14.TabIndex = 28;
-            this.label14.Text = "Port";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial", 9F);
+            this.label18.ForeColor = System.Drawing.Color.Silver;
+            this.label18.Location = new System.Drawing.Point(157, 8);
+            this.label18.Name = "label18";
+            this.label18.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label18.Size = new System.Drawing.Size(40, 18);
+            this.label18.TabIndex = 28;
+            this.label18.Text = "User";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label15
+            // ui_cmsSite
             // 
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 9F);
-            this.label15.ForeColor = System.Drawing.Color.Silver;
-            this.label15.Location = new System.Drawing.Point(11, 18);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label15.Size = new System.Drawing.Size(48, 22);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Name";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ui_cmsSite.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ui_cmsSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ui_cmsSite.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsSite.FormattingEnabled = true;
+            this.ui_cmsSite.Items.AddRange(new object[] {
+            "thinh.iot.vn",
+            "english.iot.vn",
+            "sach.iot.vn",
+            "truyen.iot.vn",
+            "iot.vn",
+            "baovethienphong.com",
+            "ketoankimthuy.com",
+            "baove.info"});
+            this.ui_cmsSite.Location = new System.Drawing.Point(392, 6);
+            this.ui_cmsSite.Name = "ui_cmsSite";
+            this.ui_cmsSite.Size = new System.Drawing.Size(175, 22);
+            this.ui_cmsSite.TabIndex = 33;
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.Font = new System.Drawing.Font("Arial", 9F);
+            this.label19.ForeColor = System.Drawing.Color.Silver;
+            this.label19.Location = new System.Drawing.Point(361, 6);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label19.Size = new System.Drawing.Size(36, 22);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Site";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.ui_btnCmsOpen);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryMoveArticle);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryRename);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryAdd);
+            this.panel4.Controls.Add(this.ui_cmsTotalArticle);
+            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.ui_cmsSearchArticle);
+            this.panel4.Controls.Add(this.label20);
+            this.panel4.Controls.Add(this.ui_cmsIP);
+            this.panel4.Controls.Add(this.ui_cmsSite);
+            this.panel4.Controls.Add(this.ui_cmsPassword);
+            this.panel4.Controls.Add(this.ui_cmsUsername);
+            this.panel4.Controls.Add(this.label19);
+            this.panel4.Controls.Add(this.label18);
+            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(579, 58);
+            this.panel4.TabIndex = 20;
+            // 
+            // ui_cmsSearchArticle
+            // 
+            this.ui_cmsSearchArticle.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsSearchArticle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_cmsSearchArticle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsSearchArticle.Location = new System.Drawing.Point(392, 31);
+            this.ui_cmsSearchArticle.Name = "ui_cmsSearchArticle";
+            this.ui_cmsSearchArticle.Size = new System.Drawing.Size(111, 22);
+            this.ui_cmsSearchArticle.TabIndex = 36;
+            this.ui_cmsSearchArticle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 9F);
+            this.label20.ForeColor = System.Drawing.Color.Silver;
+            this.label20.Location = new System.Drawing.Point(342, 30);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label20.Size = new System.Drawing.Size(56, 22);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "Search";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Arial", 9F);
+            this.label21.ForeColor = System.Drawing.Color.Silver;
+            this.label21.Location = new System.Drawing.Point(538, 30);
+            this.label21.Name = "label21";
+            this.label21.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label21.Size = new System.Drawing.Size(43, 22);
+            this.label21.TabIndex = 37;
+            this.label21.Text = "items";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_cmsTotalArticle
+            // 
+            this.ui_cmsTotalArticle.BackColor = System.Drawing.Color.Transparent;
+            this.ui_cmsTotalArticle.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.ui_cmsTotalArticle.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.ui_cmsTotalArticle.Location = new System.Drawing.Point(504, 31);
+            this.ui_cmsTotalArticle.Name = "ui_cmsTotalArticle";
+            this.ui_cmsTotalArticle.Size = new System.Drawing.Size(40, 22);
+            this.ui_cmsTotalArticle.TabIndex = 38;
+            this.ui_cmsTotalArticle.Text = "0";
+            this.ui_cmsTotalArticle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_gridAticle
+            // 
+            this.ui_gridAticle.BackgroundColor = System.Drawing.Color.Black;
+            this.ui_gridAticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ui_gridAticle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ui_gridAticle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ui_gridAticle.Location = new System.Drawing.Point(178, 58);
+            this.ui_gridAticle.Name = "ui_gridAticle";
+            this.ui_gridAticle.Size = new System.Drawing.Size(401, 255);
+            this.ui_gridAticle.TabIndex = 21;
+            // 
+            // ui_treeArticle
+            // 
+            this.ui_treeArticle.BackColor = System.Drawing.Color.Black;
+            this.ui_treeArticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ui_treeArticle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ui_treeArticle.Location = new System.Drawing.Point(0, 58);
+            this.ui_treeArticle.Name = "ui_treeArticle";
+            this.ui_treeArticle.Size = new System.Drawing.Size(175, 255);
+            this.ui_treeArticle.TabIndex = 22;
+            // 
+            // splitter1
+            // 
+            this.splitter1.BackColor = System.Drawing.Color.DimGray;
+            this.splitter1.Location = new System.Drawing.Point(175, 58);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 255);
+            this.splitter1.TabIndex = 23;
+            this.splitter1.TabStop = false;
+            // 
+            // ui_btnCmsCategoryAdd
+            // 
+            this.ui_btnCmsCategoryAdd.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryAdd.Location = new System.Drawing.Point(4, 32);
+            this.ui_btnCmsCategoryAdd.Name = "ui_btnCmsCategoryAdd";
+            this.ui_btnCmsCategoryAdd.Size = new System.Drawing.Size(20, 21);
+            this.ui_btnCmsCategoryAdd.TabIndex = 39;
+            this.ui_btnCmsCategoryAdd.Text = "+";
+            this.ui_btnCmsCategoryAdd.UseVisualStyleBackColor = true;
+            // 
+            // ui_btnCmsCategoryRename
+            // 
+            this.ui_btnCmsCategoryRename.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryRename.Location = new System.Drawing.Point(24, 32);
+            this.ui_btnCmsCategoryRename.Name = "ui_btnCmsCategoryRename";
+            this.ui_btnCmsCategoryRename.Size = new System.Drawing.Size(59, 22);
+            this.ui_btnCmsCategoryRename.TabIndex = 40;
+            this.ui_btnCmsCategoryRename.Text = "rename";
+            this.ui_btnCmsCategoryRename.UseVisualStyleBackColor = true;
+            // 
+            // ui_btnCmsCategoryMoveArticle
+            // 
+            this.ui_btnCmsCategoryMoveArticle.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryMoveArticle.Location = new System.Drawing.Point(84, 32);
+            this.ui_btnCmsCategoryMoveArticle.Name = "ui_btnCmsCategoryMoveArticle";
+            this.ui_btnCmsCategoryMoveArticle.Size = new System.Drawing.Size(47, 22);
+            this.ui_btnCmsCategoryMoveArticle.TabIndex = 41;
+            this.ui_btnCmsCategoryMoveArticle.Text = "move";
+            this.ui_btnCmsCategoryMoveArticle.UseVisualStyleBackColor = true;
+            // 
+            // ui_btnCmsOpen
+            // 
+            this.ui_btnCmsOpen.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsOpen.Location = new System.Drawing.Point(132, 32);
+            this.ui_btnCmsOpen.Name = "ui_btnCmsOpen";
+            this.ui_btnCmsOpen.Size = new System.Drawing.Size(43, 22);
+            this.ui_btnCmsOpen.TabIndex = 42;
+            this.ui_btnCmsOpen.Text = "open";
+            this.ui_btnCmsOpen.UseVisualStyleBackColor = true;
+            this.ui_btnCmsOpen.Click += new System.EventHandler(this.ui_btnCmsOpen_Click);
             // 
             // fSetting
             // 
@@ -793,19 +1101,24 @@ namespace TTView
             this.Shown += new System.EventHandler(this.fSetting_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).EndInit();
             this.m_tabs.ResumeLayout(false);
-            this.m_tabGeneral.ResumeLayout(false);
+            this.ui_tabOCR.ResumeLayout(false);
             this.ui_panelGeneral.ResumeLayout(false);
             this.ui_panelGeneral.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ui_groupProcessImage.ResumeLayout(false);
             this.ui_groupProcessImage.PerformLayout();
             this.ui_groupOCR.ResumeLayout(false);
             this.ui_groupOCR.PerformLayout();
+            this.ui_tabCMS.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.m_tabOcr.ResumeLayout(false);
             this.m_tabProcessImage.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -813,7 +1126,7 @@ namespace TTView
         #endregion
 
         private FarsiLibrary.Win.FATabStrip m_tabs;
-        private FarsiLibrary.Win.FATabStripItem m_tabGeneral;
+        private FarsiLibrary.Win.FATabStripItem ui_tabOCR;
         private FarsiLibrary.Win.FATabStripItem m_tabOcr;
         private FarsiLibrary.Win.FATabStripItem m_tabProcessImage;
         private System.Windows.Forms.Panel ui_panelGeneral;
@@ -863,5 +1176,27 @@ namespace TTView
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private FarsiLibrary.Win.FATabStripItem ui_tabCMS;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox ui_cmsSite;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox ui_cmsIP;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox ui_cmsPassword;
+        private System.Windows.Forms.TextBox ui_cmsUsername;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox ui_cmsSearchArticle;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label ui_cmsTotalArticle;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DataGridView ui_gridAticle;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.TreeView ui_treeArticle;
+        private System.Windows.Forms.Button ui_btnCmsCategoryRename;
+        private System.Windows.Forms.Button ui_btnCmsCategoryAdd;
+        private System.Windows.Forms.Button ui_btnCmsCategoryMoveArticle;
+        private System.Windows.Forms.Button ui_btnCmsOpen;
     }
 }

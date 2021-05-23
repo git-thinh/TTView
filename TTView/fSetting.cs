@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -17,7 +18,8 @@ namespace TTView
 
             InitializeComponent();
 
-            m_tabs.WindowClosed += (se, ev) => {
+            m_tabs.WindowClosed += (se, ev) =>
+            {
                 app.WriteFile();
                 this.Close();
             };
@@ -52,38 +54,17 @@ namespace TTView
 
         private void btnSave_Click(object sender, EventArgs e)
             => __writeSettingChanged();
-        
-        #endregion
 
-        #region [ MOVE ]
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void f_form_move_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        void bindSetting()
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        #endregion
-
-        void bindSetting() {
             var setting = m_app.Setting;
 
+            // OCR
             ui_checkOnly10PageFirstlyOrAll.Checked = setting.Only10PageFirstlyOrAll;
             ui_checkViewModeNoBorder.Checked = setting.ViewModeNoBorder;
             ui_DrawSelectionImageAndWord.Checked = setting.DrawSelectionImageWord;
             ui_HideToolbarFooter.Checked = setting.HideToolbar;
-            
+
             ui_selectOcrEngineMode.SelectedIndex = setting.OcrEngine;
             ui_selectOcrLanguage.SelectedIndex = setting.OcrLanguage;
             ui_selectOcrLevel.SelectedIndex = setting.OcrLevel;
@@ -102,9 +83,15 @@ namespace TTView
             ui_textRedisIP.Text = m_app.Redis.Host;
             ui_textRedisDB.Text = m_app.Redis.Db.ToString();
             ui_textRedisPort.Text = m_app.Redis.Port.ToString();
+
+            //CMS
+            ui_cmsIP.SelectedIndex = 0;
+            ui_cmsSite.SelectedIndex = 0;
+            ui_cmsPassword.Text = "L5=@yj~Z\"F&BeS3{";
         }
 
-        void __writeSettingChanged() {
+        void __writeSettingChanged()
+        {
             var setting = m_app.Setting;
             setting.PathStoreFilePublish = ui_txtPathStoreFilePublish.Text.Trim();
             setting.PathStoreFileRaw = ui_txtPathStoreFileRaw.Text.Trim();
@@ -132,6 +119,31 @@ namespace TTView
 
             m_app.WriteFile();
         }
+
+        #endregion
+
+        #region [ MOVE ]
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void f_form_move_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        #endregion
+
+        #region [ OCR ]
 
         void openDialog()
         {
@@ -218,5 +230,19 @@ namespace TTView
 
         }
 
+        #endregion
+
+        private void ui_btnCmsOpen_Click(object sender, EventArgs e)
+        {
+            App.Send(COMMANDS.CURL_FTP_UPLOAD_FILE, "Nguyễn Văn Thịnh", new Dictionary<string, object>() {
+                //{ "ftp", "ftp://" + ui_cmsIP.Text + ":22/test/1.txt" },
+                //{ "ftp", "sftp://" + ui_cmsIP.Text + ":22/test/" },
+                //{ "ftp", "ftp://"+ui_cmsUsername.Text+":"+ui_cmsPassword.Text+"@" + ui_cmsIP.Text + "/test/" },
+                { "host", ui_cmsIP.Text },
+                { "port", 22 },
+                { "username", ui_cmsUsername.Text },
+                { "password", ui_cmsPassword.Text },
+            });
+        }
     }
 }
