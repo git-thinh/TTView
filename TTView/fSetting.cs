@@ -235,9 +235,6 @@ namespace TTView
         private void ui_btnCmsOpen_Click(object sender, EventArgs e)
         {
             App.Send(COMMANDS.CURL_FTP_UPLOAD_FILE, "Nguyễn Văn Thịnh", new Dictionary<string, object>() {
-                //{ "ftp", "ftp://" + ui_cmsIP.Text + ":22/test/1.txt" },
-                //{ "ftp", "sftp://" + ui_cmsIP.Text + ":22/test/" },
-                //{ "ftp", "ftp://"+ui_cmsUsername.Text+":"+ui_cmsPassword.Text+"@" + ui_cmsIP.Text + "/test/" },
                 { "host", ui_cmsIP.Text },
                 { "port", 22 },
                 { "username", ui_cmsUsername.Text },

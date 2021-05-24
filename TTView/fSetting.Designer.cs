@@ -30,8 +30,17 @@ namespace TTView
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("thinh.iot.vn");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("buddha.iot.vn");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("iot.vn");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("book.iot.vn");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("english.iot.vn");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("truyen.iot.vn");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("baovethienphong.com");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("ketoankimthuy.com");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("baove.info");
             this.m_tabs = new FarsiLibrary.Win.FATabStrip();
-            this.ui_tabOCR = new FarsiLibrary.Win.FATabStripItem();
+            this.ui_tabBook = new FarsiLibrary.Win.FATabStripItem();
             this.ui_panelGeneral = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -79,33 +88,48 @@ namespace TTView
             this.label1 = new System.Windows.Forms.Label();
             this.ui_tabCMS = new FarsiLibrary.Win.FATabStripItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ui_gridAticle = new System.Windows.Forms.DataGridView();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.ui_treeArticle = new System.Windows.Forms.TreeView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.ui_btnCmsOpen = new System.Windows.Forms.Button();
+            this.ui_btnCmsCategoryMoveArticle = new System.Windows.Forms.Button();
+            this.ui_btnCmsCategoryRename = new System.Windows.Forms.Button();
+            this.ui_btnCmsCategoryAdd = new System.Windows.Forms.Button();
+            this.ui_cmsTotalArticle = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ui_cmsSearchArticle = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ui_cmsSite = new System.Windows.Forms.ComboBox();
             this.m_tabOcr = new FarsiLibrary.Win.FATabStripItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.m_tabProcessImage = new FarsiLibrary.Win.FATabStripItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ui_tabCloud = new FarsiLibrary.Win.FATabStripItem();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.ui_cmsIP = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.ui_cmsPassword = new System.Windows.Forms.TextBox();
             this.ui_cmsUsername = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.ui_cmsSite = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.ui_cmsSearchArticle = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.ui_cmsTotalArticle = new System.Windows.Forms.Label();
-            this.ui_gridAticle = new System.Windows.Forms.DataGridView();
-            this.ui_treeArticle = new System.Windows.Forms.TreeView();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.ui_btnCmsCategoryAdd = new System.Windows.Forms.Button();
-            this.ui_btnCmsCategoryRename = new System.Windows.Forms.Button();
-            this.ui_btnCmsCategoryMoveArticle = new System.Windows.Forms.Button();
-            this.ui_btnCmsOpen = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ui_tabEnglish = new FarsiLibrary.Win.FATabStripItem();
+            this.ui_tabYouTube = new FarsiLibrary.Win.FATabStripItem();
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).BeginInit();
             this.m_tabs.SuspendLayout();
-            this.ui_tabOCR.SuspendLayout();
+            this.ui_tabBook.SuspendLayout();
             this.ui_panelGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -113,10 +137,15 @@ namespace TTView
             this.ui_groupOCR.SuspendLayout();
             this.ui_tabCMS.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).BeginInit();
+            this.panel4.SuspendLayout();
             this.m_tabOcr.SuspendLayout();
             this.m_tabProcessImage.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).BeginInit();
+            this.ui_tabCloud.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_tabs
@@ -125,24 +154,27 @@ namespace TTView
             this.m_tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m_tabs.Font = new System.Drawing.Font("Arial", 11F);
             this.m_tabs.Items.AddRange(new FarsiLibrary.Win.FATabStripItem[] {
-            this.ui_tabOCR,
-            this.ui_tabCMS});
+            this.ui_tabCMS,
+            this.ui_tabBook,
+            this.ui_tabEnglish,
+            this.ui_tabYouTube,
+            this.ui_tabCloud});
             this.m_tabs.Location = new System.Drawing.Point(0, 0);
             this.m_tabs.Name = "m_tabs";
             this.m_tabs.SelectedItem = this.ui_tabCMS;
-            this.m_tabs.Size = new System.Drawing.Size(581, 335);
+            this.m_tabs.Size = new System.Drawing.Size(581, 450);
             this.m_tabs.TabIndex = 0;
             this.m_tabs.Text = "faTabStrip1";
             // 
-            // ui_tabOCR
+            // ui_tabBook
             // 
-            this.ui_tabOCR.CanClose = false;
-            this.ui_tabOCR.Controls.Add(this.ui_panelGeneral);
-            this.ui_tabOCR.IsDrawn = true;
-            this.ui_tabOCR.Name = "ui_tabOCR";
-            this.ui_tabOCR.Size = new System.Drawing.Size(579, 313);
-            this.ui_tabOCR.TabIndex = 0;
-            this.ui_tabOCR.Title = "OCR";
+            this.ui_tabBook.CanClose = false;
+            this.ui_tabBook.Controls.Add(this.ui_panelGeneral);
+            this.ui_tabBook.IsDrawn = true;
+            this.ui_tabBook.Name = "ui_tabBook";
+            this.ui_tabBook.Size = new System.Drawing.Size(579, 428);
+            this.ui_tabBook.TabIndex = 0;
+            this.ui_tabBook.Title = "Book";
             // 
             // ui_panelGeneral
             // 
@@ -162,7 +194,7 @@ namespace TTView
             this.ui_panelGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ui_panelGeneral.Location = new System.Drawing.Point(0, 0);
             this.ui_panelGeneral.Name = "ui_panelGeneral";
-            this.ui_panelGeneral.Size = new System.Drawing.Size(579, 313);
+            this.ui_panelGeneral.Size = new System.Drawing.Size(579, 428);
             this.ui_panelGeneral.TabIndex = 0;
             // 
             // groupBox2
@@ -176,7 +208,7 @@ namespace TTView
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 9F);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox2.Location = new System.Drawing.Point(178, 227);
+            this.groupBox2.Location = new System.Drawing.Point(178, 342);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(392, 82);
             this.groupBox2.TabIndex = 18;
@@ -270,7 +302,7 @@ namespace TTView
             this.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApply.Font = new System.Drawing.Font("Arial", 8F);
             this.btnApply.ForeColor = System.Drawing.Color.White;
-            this.btnApply.Location = new System.Drawing.Point(11, 282);
+            this.btnApply.Location = new System.Drawing.Point(11, 396);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(60, 23);
             this.btnApply.TabIndex = 17;
@@ -311,7 +343,7 @@ namespace TTView
             this.groupBox1.Controls.Add(this.ui_checkViewModeMobile);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9F);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.groupBox1.Location = new System.Drawing.Point(178, 151);
+            this.groupBox1.Location = new System.Drawing.Point(178, 266);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(392, 74);
             this.groupBox1.TabIndex = 16;
@@ -450,7 +482,7 @@ namespace TTView
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial", 8F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(76, 282);
+            this.btnSave.Location = new System.Drawing.Point(76, 396);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(96, 23);
             this.btnSave.TabIndex = 7;
@@ -471,7 +503,7 @@ namespace TTView
             this.ui_groupProcessImage.Controls.Add(this.label4);
             this.ui_groupProcessImage.Font = new System.Drawing.Font("Arial", 9F);
             this.ui_groupProcessImage.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ui_groupProcessImage.Location = new System.Drawing.Point(10, 151);
+            this.ui_groupProcessImage.Location = new System.Drawing.Point(10, 266);
             this.ui_groupProcessImage.Name = "ui_groupProcessImage";
             this.ui_groupProcessImage.Size = new System.Drawing.Size(163, 125);
             this.ui_groupProcessImage.TabIndex = 6;
@@ -777,7 +809,7 @@ namespace TTView
             this.ui_tabCMS.IsDrawn = true;
             this.ui_tabCMS.Name = "ui_tabCMS";
             this.ui_tabCMS.Selected = true;
-            this.ui_tabCMS.Size = new System.Drawing.Size(579, 313);
+            this.ui_tabCMS.Size = new System.Drawing.Size(579, 428);
             this.ui_tabCMS.TabIndex = 1;
             this.ui_tabCMS.Title = "CMS";
             // 
@@ -791,8 +823,197 @@ namespace TTView
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(579, 313);
+            this.panel1.Size = new System.Drawing.Size(579, 428);
             this.panel1.TabIndex = 0;
+            // 
+            // ui_gridAticle
+            // 
+            this.ui_gridAticle.BackgroundColor = System.Drawing.Color.Black;
+            this.ui_gridAticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ui_gridAticle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ui_gridAticle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ui_gridAticle.Location = new System.Drawing.Point(178, 31);
+            this.ui_gridAticle.Name = "ui_gridAticle";
+            this.ui_gridAticle.Size = new System.Drawing.Size(401, 397);
+            this.ui_gridAticle.TabIndex = 21;
+            // 
+            // splitter1
+            // 
+            this.splitter1.BackColor = System.Drawing.Color.DimGray;
+            this.splitter1.Location = new System.Drawing.Point(175, 31);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 397);
+            this.splitter1.TabIndex = 23;
+            this.splitter1.TabStop = false;
+            // 
+            // ui_treeArticle
+            // 
+            this.ui_treeArticle.BackColor = System.Drawing.Color.Black;
+            this.ui_treeArticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ui_treeArticle.CheckBoxes = true;
+            this.ui_treeArticle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ui_treeArticle.Font = new System.Drawing.Font("Arial", 8F);
+            this.ui_treeArticle.ForeColor = System.Drawing.SystemColors.Info;
+            this.ui_treeArticle.Location = new System.Drawing.Point(0, 31);
+            this.ui_treeArticle.Name = "ui_treeArticle";
+            treeNode1.Checked = true;
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "thinh.iot.vn";
+            treeNode2.Name = "Node8";
+            treeNode2.Text = "buddha.iot.vn";
+            treeNode3.Name = "Node1";
+            treeNode3.Text = "iot.vn";
+            treeNode4.Name = "Node2";
+            treeNode4.Text = "book.iot.vn";
+            treeNode5.Name = "Node3";
+            treeNode5.Text = "english.iot.vn";
+            treeNode6.Name = "Node4";
+            treeNode6.Text = "truyen.iot.vn";
+            treeNode7.Name = "Node5";
+            treeNode7.Text = "baovethienphong.com";
+            treeNode8.Name = "Node6";
+            treeNode8.Text = "ketoankimthuy.com";
+            treeNode9.Name = "Node7";
+            treeNode9.Text = "baove.info";
+            this.ui_treeArticle.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            this.ui_treeArticle.Size = new System.Drawing.Size(175, 397);
+            this.ui_treeArticle.TabIndex = 22;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.ui_btnCmsOpen);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryMoveArticle);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryRename);
+            this.panel4.Controls.Add(this.ui_btnCmsCategoryAdd);
+            this.panel4.Controls.Add(this.ui_cmsTotalArticle);
+            this.panel4.Controls.Add(this.label21);
+            this.panel4.Controls.Add(this.ui_cmsSearchArticle);
+            this.panel4.Controls.Add(this.label20);
+            this.panel4.Controls.Add(this.ui_cmsSite);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(579, 31);
+            this.panel4.TabIndex = 20;
+            // 
+            // ui_btnCmsOpen
+            // 
+            this.ui_btnCmsOpen.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsOpen.Location = new System.Drawing.Point(132, 3);
+            this.ui_btnCmsOpen.Name = "ui_btnCmsOpen";
+            this.ui_btnCmsOpen.Size = new System.Drawing.Size(43, 22);
+            this.ui_btnCmsOpen.TabIndex = 42;
+            this.ui_btnCmsOpen.Text = "open";
+            this.ui_btnCmsOpen.UseVisualStyleBackColor = true;
+            this.ui_btnCmsOpen.Click += new System.EventHandler(this.ui_btnCmsOpen_Click);
+            // 
+            // ui_btnCmsCategoryMoveArticle
+            // 
+            this.ui_btnCmsCategoryMoveArticle.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryMoveArticle.Location = new System.Drawing.Point(84, 3);
+            this.ui_btnCmsCategoryMoveArticle.Name = "ui_btnCmsCategoryMoveArticle";
+            this.ui_btnCmsCategoryMoveArticle.Size = new System.Drawing.Size(47, 22);
+            this.ui_btnCmsCategoryMoveArticle.TabIndex = 41;
+            this.ui_btnCmsCategoryMoveArticle.Text = "move";
+            this.ui_btnCmsCategoryMoveArticle.UseVisualStyleBackColor = true;
+            // 
+            // ui_btnCmsCategoryRename
+            // 
+            this.ui_btnCmsCategoryRename.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryRename.Location = new System.Drawing.Point(24, 3);
+            this.ui_btnCmsCategoryRename.Name = "ui_btnCmsCategoryRename";
+            this.ui_btnCmsCategoryRename.Size = new System.Drawing.Size(59, 22);
+            this.ui_btnCmsCategoryRename.TabIndex = 40;
+            this.ui_btnCmsCategoryRename.Text = "rename";
+            this.ui_btnCmsCategoryRename.UseVisualStyleBackColor = true;
+            // 
+            // ui_btnCmsCategoryAdd
+            // 
+            this.ui_btnCmsCategoryAdd.Font = new System.Drawing.Font("Arial", 9F);
+            this.ui_btnCmsCategoryAdd.Location = new System.Drawing.Point(4, 3);
+            this.ui_btnCmsCategoryAdd.Name = "ui_btnCmsCategoryAdd";
+            this.ui_btnCmsCategoryAdd.Size = new System.Drawing.Size(20, 21);
+            this.ui_btnCmsCategoryAdd.TabIndex = 39;
+            this.ui_btnCmsCategoryAdd.Text = "+";
+            this.ui_btnCmsCategoryAdd.UseVisualStyleBackColor = true;
+            // 
+            // ui_cmsTotalArticle
+            // 
+            this.ui_cmsTotalArticle.BackColor = System.Drawing.Color.Transparent;
+            this.ui_cmsTotalArticle.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.ui_cmsTotalArticle.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.ui_cmsTotalArticle.Location = new System.Drawing.Point(309, 5);
+            this.ui_cmsTotalArticle.Name = "ui_cmsTotalArticle";
+            this.ui_cmsTotalArticle.Size = new System.Drawing.Size(40, 22);
+            this.ui_cmsTotalArticle.TabIndex = 38;
+            this.ui_cmsTotalArticle.Text = "0";
+            this.ui_cmsTotalArticle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label21
+            // 
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Arial", 9F);
+            this.label21.ForeColor = System.Drawing.Color.Silver;
+            this.label21.Location = new System.Drawing.Point(343, 4);
+            this.label21.Name = "label21";
+            this.label21.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label21.Size = new System.Drawing.Size(43, 22);
+            this.label21.TabIndex = 37;
+            this.label21.Text = "items";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_cmsSearchArticle
+            // 
+            this.ui_cmsSearchArticle.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsSearchArticle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ui_cmsSearchArticle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsSearchArticle.Location = new System.Drawing.Point(219, 4);
+            this.ui_cmsSearchArticle.Name = "ui_cmsSearchArticle";
+            this.ui_cmsSearchArticle.Size = new System.Drawing.Size(91, 22);
+            this.ui_cmsSearchArticle.TabIndex = 36;
+            this.ui_cmsSearchArticle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Arial", 9F);
+            this.label20.ForeColor = System.Drawing.Color.Silver;
+            this.label20.Location = new System.Drawing.Point(169, 3);
+            this.label20.Name = "label20";
+            this.label20.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label20.Size = new System.Drawing.Size(56, 22);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "Search";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ui_cmsSite
+            // 
+            this.ui_cmsSite.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ui_cmsSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ui_cmsSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ui_cmsSite.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ui_cmsSite.FormattingEnabled = true;
+            this.ui_cmsSite.Items.AddRange(new object[] {
+            "",
+            "ADD NEW ARTICLE",
+            "EDIT ARTICLE",
+            "DELETE ARTICLE",
+            "MOVE TO OTHER FOLDER",
+            "--------------------------",
+            "PUBLISH TO CLOUD"});
+            this.ui_cmsSite.Location = new System.Drawing.Point(392, 6);
+            this.ui_cmsSite.Name = "ui_cmsSite";
+            this.ui_cmsSite.Size = new System.Drawing.Size(184, 22);
+            this.ui_cmsSite.TabIndex = 33;
             // 
             // m_tabOcr
             // 
@@ -832,6 +1053,28 @@ namespace TTView
             this.panel3.Size = new System.Drawing.Size(798, 429);
             this.panel3.TabIndex = 1;
             // 
+            // ui_tabCloud
+            // 
+            this.ui_tabCloud.Controls.Add(this.panel5);
+            this.ui_tabCloud.IsDrawn = true;
+            this.ui_tabCloud.Name = "ui_tabCloud";
+            this.ui_tabCloud.Size = new System.Drawing.Size(579, 428);
+            this.ui_tabCloud.TabIndex = 2;
+            this.ui_tabCloud.Title = "Cloud";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Controls.Add(this.panel8);
+            this.panel5.Controls.Add(this.panel7);
+            this.panel5.Controls.Add(this.flowLayoutPanel1);
+            this.panel5.Controls.Add(this.panel6);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(579, 428);
+            this.panel5.TabIndex = 0;
+            // 
             // ui_cmsIP
             // 
             this.ui_cmsIP.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -841,34 +1084,21 @@ namespace TTView
             this.ui_cmsIP.FormattingEnabled = true;
             this.ui_cmsIP.Items.AddRange(new object[] {
             "103.130.215.181"});
-            this.ui_cmsIP.Location = new System.Drawing.Point(25, 6);
+            this.ui_cmsIP.Location = new System.Drawing.Point(19, 6);
             this.ui_cmsIP.Name = "ui_cmsIP";
-            this.ui_cmsIP.Size = new System.Drawing.Size(130, 22);
-            this.ui_cmsIP.TabIndex = 18;
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial", 9F);
-            this.label16.ForeColor = System.Drawing.Color.Silver;
-            this.label16.Location = new System.Drawing.Point(6, 6);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label16.Size = new System.Drawing.Size(23, 22);
-            this.label16.TabIndex = 32;
-            this.label16.Text = "IP";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ui_cmsIP.Size = new System.Drawing.Size(126, 22);
+            this.ui_cmsIP.TabIndex = 33;
             // 
             // ui_cmsPassword
             // 
             this.ui_cmsPassword.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_cmsPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_cmsPassword.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ui_cmsPassword.Location = new System.Drawing.Point(285, 6);
+            this.ui_cmsPassword.Location = new System.Drawing.Point(253, 6);
             this.ui_cmsPassword.Name = "ui_cmsPassword";
             this.ui_cmsPassword.PasswordChar = '*';
-            this.ui_cmsPassword.Size = new System.Drawing.Size(73, 22);
-            this.ui_cmsPassword.TabIndex = 31;
+            this.ui_cmsPassword.Size = new System.Drawing.Size(71, 22);
+            this.ui_cmsPassword.TabIndex = 37;
             this.ui_cmsPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ui_cmsUsername
@@ -876,223 +1106,210 @@ namespace TTView
             this.ui_cmsUsername.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ui_cmsUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ui_cmsUsername.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ui_cmsUsername.Location = new System.Drawing.Point(191, 6);
+            this.ui_cmsUsername.Location = new System.Drawing.Point(176, 6);
             this.ui_cmsUsername.Name = "ui_cmsUsername";
-            this.ui_cmsUsername.Size = new System.Drawing.Size(54, 22);
-            this.ui_cmsUsername.TabIndex = 30;
+            this.ui_cmsUsername.Size = new System.Drawing.Size(45, 22);
+            this.ui_cmsUsername.TabIndex = 36;
             this.ui_cmsUsername.Text = "root";
             this.ui_cmsUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Arial", 9F);
-            this.label17.ForeColor = System.Drawing.Color.Silver;
-            this.label17.Location = new System.Drawing.Point(247, 5);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label17.Size = new System.Drawing.Size(42, 22);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "Pass";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label18
             // 
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Arial", 9F);
             this.label18.ForeColor = System.Drawing.Color.Silver;
-            this.label18.Location = new System.Drawing.Point(157, 8);
+            this.label18.Location = new System.Drawing.Point(143, 8);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.label18.Size = new System.Drawing.Size(40, 18);
-            this.label18.TabIndex = 28;
+            this.label18.TabIndex = 34;
             this.label18.Text = "User";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ui_cmsSite
+            // label17
             // 
-            this.ui_cmsSite.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_cmsSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ui_cmsSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ui_cmsSite.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ui_cmsSite.FormattingEnabled = true;
-            this.ui_cmsSite.Items.AddRange(new object[] {
-            "thinh.iot.vn",
-            "english.iot.vn",
-            "sach.iot.vn",
-            "truyen.iot.vn",
-            "iot.vn",
-            "baovethienphong.com",
-            "ketoankimthuy.com",
-            "baove.info"});
-            this.ui_cmsSite.Location = new System.Drawing.Point(392, 6);
-            this.ui_cmsSite.Name = "ui_cmsSite";
-            this.ui_cmsSite.Size = new System.Drawing.Size(175, 22);
-            this.ui_cmsSite.TabIndex = 33;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial", 9F);
+            this.label17.ForeColor = System.Drawing.Color.Silver;
+            this.label17.Location = new System.Drawing.Point(219, 5);
+            this.label17.Name = "label17";
+            this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label17.Size = new System.Drawing.Size(42, 22);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "Pass";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label19
+            // label16
             // 
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F);
-            this.label19.ForeColor = System.Drawing.Color.Silver;
-            this.label19.Location = new System.Drawing.Point(361, 6);
-            this.label19.Name = "label19";
-            this.label19.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label19.Size = new System.Drawing.Size(36, 22);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "Site";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial", 9F);
+            this.label16.ForeColor = System.Drawing.Color.Silver;
+            this.label16.Location = new System.Drawing.Point(3, 6);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.label16.Size = new System.Drawing.Size(23, 22);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "IP";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel4
+            // button1
             // 
-            this.panel4.Controls.Add(this.ui_btnCmsOpen);
-            this.panel4.Controls.Add(this.ui_btnCmsCategoryMoveArticle);
-            this.panel4.Controls.Add(this.ui_btnCmsCategoryRename);
-            this.panel4.Controls.Add(this.ui_btnCmsCategoryAdd);
-            this.panel4.Controls.Add(this.ui_cmsTotalArticle);
-            this.panel4.Controls.Add(this.label21);
-            this.panel4.Controls.Add(this.ui_cmsSearchArticle);
-            this.panel4.Controls.Add(this.label20);
-            this.panel4.Controls.Add(this.ui_cmsIP);
-            this.panel4.Controls.Add(this.ui_cmsSite);
-            this.panel4.Controls.Add(this.ui_cmsPassword);
-            this.panel4.Controls.Add(this.ui_cmsUsername);
-            this.panel4.Controls.Add(this.label19);
-            this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(579, 58);
-            this.panel4.TabIndex = 20;
+            this.button1.Font = new System.Drawing.Font("Arial", 9F);
+            this.button1.Location = new System.Drawing.Point(325, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 22);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "connect";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // ui_cmsSearchArticle
+            // panel6
             // 
-            this.ui_cmsSearchArticle.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ui_cmsSearchArticle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ui_cmsSearchArticle.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ui_cmsSearchArticle.Location = new System.Drawing.Point(392, 31);
-            this.ui_cmsSearchArticle.Name = "ui_cmsSearchArticle";
-            this.ui_cmsSearchArticle.Size = new System.Drawing.Size(111, 22);
-            this.ui_cmsSearchArticle.TabIndex = 36;
-            this.ui_cmsSearchArticle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.panel6.Controls.Add(this.button2);
+            this.panel6.Controls.Add(this.ui_cmsIP);
+            this.panel6.Controls.Add(this.button4);
+            this.panel6.Controls.Add(this.ui_cmsUsername);
+            this.panel6.Controls.Add(this.ui_cmsPassword);
+            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(579, 33);
+            this.panel6.TabIndex = 44;
             // 
-            // label20
+            // panel7
             // 
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Arial", 9F);
-            this.label20.ForeColor = System.Drawing.Color.Silver;
-            this.label20.Location = new System.Drawing.Point(342, 30);
-            this.label20.Name = "label20";
-            this.label20.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label20.Size = new System.Drawing.Size(56, 22);
-            this.label20.TabIndex = 35;
-            this.label20.Text = "Search";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.panel7.Controls.Add(this.comboBox2);
+            this.panel7.Controls.Add(this.button3);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(0, 133);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(579, 28);
+            this.panel7.TabIndex = 46;
             // 
-            // label21
+            // button3
             // 
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Arial", 9F);
-            this.label21.ForeColor = System.Drawing.Color.Silver;
-            this.label21.Location = new System.Drawing.Point(538, 30);
-            this.label21.Name = "label21";
-            this.label21.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.label21.Size = new System.Drawing.Size(43, 22);
-            this.label21.TabIndex = 37;
-            this.label21.Text = "items";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.Font = new System.Drawing.Font("Arial", 9F);
+            this.button3.Location = new System.Drawing.Point(467, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 22);
+            this.button3.TabIndex = 48;
+            this.button3.Text = "+ push to queue";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // ui_cmsTotalArticle
+            // button4
             // 
-            this.ui_cmsTotalArticle.BackColor = System.Drawing.Color.Transparent;
-            this.ui_cmsTotalArticle.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.ui_cmsTotalArticle.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.ui_cmsTotalArticle.Location = new System.Drawing.Point(504, 31);
-            this.ui_cmsTotalArticle.Name = "ui_cmsTotalArticle";
-            this.ui_cmsTotalArticle.Size = new System.Drawing.Size(40, 22);
-            this.ui_cmsTotalArticle.TabIndex = 38;
-            this.ui_cmsTotalArticle.Text = "0";
-            this.ui_cmsTotalArticle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button4.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Arial", 9F);
+            this.button4.ForeColor = System.Drawing.Color.Red;
+            this.button4.Location = new System.Drawing.Point(383, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(111, 22);
+            this.button4.TabIndex = 44;
+            this.button4.Text = "Upload Cloud";
+            this.button4.UseVisualStyleBackColor = false;
             // 
-            // ui_gridAticle
+            // comboBox2
             // 
-            this.ui_gridAticle.BackgroundColor = System.Drawing.Color.Black;
-            this.ui_gridAticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ui_gridAticle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ui_gridAticle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ui_gridAticle.Location = new System.Drawing.Point(178, 58);
-            this.ui_gridAticle.Name = "ui_gridAticle";
-            this.ui_gridAticle.Size = new System.Drawing.Size(401, 255);
-            this.ui_gridAticle.TabIndex = 21;
+            this.comboBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "103.130.215.181"});
+            this.comboBox2.Location = new System.Drawing.Point(6, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(460, 22);
+            this.comboBox2.TabIndex = 49;
             // 
-            // ui_treeArticle
+            // flowLayoutPanel1
             // 
-            this.ui_treeArticle.BackColor = System.Drawing.Color.Black;
-            this.ui_treeArticle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ui_treeArticle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ui_treeArticle.Location = new System.Drawing.Point(0, 58);
-            this.ui_treeArticle.Name = "ui_treeArticle";
-            this.ui_treeArticle.Size = new System.Drawing.Size(175, 255);
-            this.ui_treeArticle.TabIndex = 22;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Info;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 33);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(579, 100);
+            this.flowLayoutPanel1.TabIndex = 47;
             // 
-            // splitter1
+            // panel8
             // 
-            this.splitter1.BackColor = System.Drawing.Color.DimGray;
-            this.splitter1.Location = new System.Drawing.Point(175, 58);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 255);
-            this.splitter1.TabIndex = 23;
-            this.splitter1.TabStop = false;
+            this.panel8.Controls.Add(this.checkedListBox1);
+            this.panel8.Controls.Add(this.splitter2);
+            this.panel8.Controls.Add(this.treeView1);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(0, 161);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(579, 267);
+            this.panel8.TabIndex = 49;
             // 
-            // ui_btnCmsCategoryAdd
+            // treeView1
             // 
-            this.ui_btnCmsCategoryAdd.Font = new System.Drawing.Font("Arial", 9F);
-            this.ui_btnCmsCategoryAdd.Location = new System.Drawing.Point(4, 32);
-            this.ui_btnCmsCategoryAdd.Name = "ui_btnCmsCategoryAdd";
-            this.ui_btnCmsCategoryAdd.Size = new System.Drawing.Size(20, 21);
-            this.ui_btnCmsCategoryAdd.TabIndex = 39;
-            this.ui_btnCmsCategoryAdd.Text = "+";
-            this.ui_btnCmsCategoryAdd.UseVisualStyleBackColor = true;
+            this.treeView1.BackColor = System.Drawing.Color.Black;
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(237, 267);
+            this.treeView1.TabIndex = 0;
             // 
-            // ui_btnCmsCategoryRename
+            // splitter2
             // 
-            this.ui_btnCmsCategoryRename.Font = new System.Drawing.Font("Arial", 9F);
-            this.ui_btnCmsCategoryRename.Location = new System.Drawing.Point(24, 32);
-            this.ui_btnCmsCategoryRename.Name = "ui_btnCmsCategoryRename";
-            this.ui_btnCmsCategoryRename.Size = new System.Drawing.Size(59, 22);
-            this.ui_btnCmsCategoryRename.TabIndex = 40;
-            this.ui_btnCmsCategoryRename.Text = "rename";
-            this.ui_btnCmsCategoryRename.UseVisualStyleBackColor = true;
+            this.splitter2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitter2.Location = new System.Drawing.Point(237, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 267);
+            this.splitter2.TabIndex = 1;
+            this.splitter2.TabStop = false;
             // 
-            // ui_btnCmsCategoryMoveArticle
+            // checkedListBox1
             // 
-            this.ui_btnCmsCategoryMoveArticle.Font = new System.Drawing.Font("Arial", 9F);
-            this.ui_btnCmsCategoryMoveArticle.Location = new System.Drawing.Point(84, 32);
-            this.ui_btnCmsCategoryMoveArticle.Name = "ui_btnCmsCategoryMoveArticle";
-            this.ui_btnCmsCategoryMoveArticle.Size = new System.Drawing.Size(47, 22);
-            this.ui_btnCmsCategoryMoveArticle.TabIndex = 41;
-            this.ui_btnCmsCategoryMoveArticle.Text = "move";
-            this.ui_btnCmsCategoryMoveArticle.UseVisualStyleBackColor = true;
+            this.checkedListBox1.BackColor = System.Drawing.Color.Black;
+            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBox1.Font = new System.Drawing.Font("Arial", 8F);
+            this.checkedListBox1.ForeColor = System.Drawing.Color.White;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(240, 0);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(339, 267);
+            this.checkedListBox1.TabIndex = 2;
             // 
-            // ui_btnCmsOpen
+            // button2
             // 
-            this.ui_btnCmsOpen.Font = new System.Drawing.Font("Arial", 9F);
-            this.ui_btnCmsOpen.Location = new System.Drawing.Point(132, 32);
-            this.ui_btnCmsOpen.Name = "ui_btnCmsOpen";
-            this.ui_btnCmsOpen.Size = new System.Drawing.Size(43, 22);
-            this.ui_btnCmsOpen.TabIndex = 42;
-            this.ui_btnCmsOpen.Text = "open";
-            this.ui_btnCmsOpen.UseVisualStyleBackColor = true;
-            this.ui_btnCmsOpen.Click += new System.EventHandler(this.ui_btnCmsOpen_Click);
+            this.button2.Font = new System.Drawing.Font("Arial", 9F);
+            this.button2.Location = new System.Drawing.Point(494, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(83, 22);
+            this.button2.TabIndex = 45;
+            this.button2.Text = "remove item";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // ui_tabEnglish
+            // 
+            this.ui_tabEnglish.IsDrawn = true;
+            this.ui_tabEnglish.Name = "ui_tabEnglish";
+            this.ui_tabEnglish.Size = new System.Drawing.Size(579, 428);
+            this.ui_tabEnglish.TabIndex = 3;
+            this.ui_tabEnglish.Title = "English";
+            // 
+            // ui_tabYouTube
+            // 
+            this.ui_tabYouTube.IsDrawn = true;
+            this.ui_tabYouTube.Name = "ui_tabYouTube";
+            this.ui_tabYouTube.Size = new System.Drawing.Size(579, 428);
+            this.ui_tabYouTube.TabIndex = 4;
+            this.ui_tabYouTube.Title = "YouTube";
             // 
             // fSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(581, 335);
+            this.ClientSize = new System.Drawing.Size(581, 450);
             this.Controls.Add(this.m_tabs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fSetting";
@@ -1101,7 +1318,7 @@ namespace TTView
             this.Shown += new System.EventHandler(this.fSetting_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.m_tabs)).EndInit();
             this.m_tabs.ResumeLayout(false);
-            this.ui_tabOCR.ResumeLayout(false);
+            this.ui_tabBook.ResumeLayout(false);
             this.ui_panelGeneral.ResumeLayout(false);
             this.ui_panelGeneral.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1114,11 +1331,17 @@ namespace TTView
             this.ui_groupOCR.PerformLayout();
             this.ui_tabCMS.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.m_tabOcr.ResumeLayout(false);
-            this.m_tabProcessImage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_gridAticle)).EndInit();
+            this.m_tabOcr.ResumeLayout(false);
+            this.m_tabProcessImage.ResumeLayout(false);
+            this.ui_tabCloud.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1126,7 +1349,7 @@ namespace TTView
         #endregion
 
         private FarsiLibrary.Win.FATabStrip m_tabs;
-        private FarsiLibrary.Win.FATabStripItem ui_tabOCR;
+        private FarsiLibrary.Win.FATabStripItem ui_tabBook;
         private FarsiLibrary.Win.FATabStripItem m_tabOcr;
         private FarsiLibrary.Win.FATabStripItem m_tabProcessImage;
         private System.Windows.Forms.Panel ui_panelGeneral;
@@ -1179,13 +1402,6 @@ namespace TTView
         private FarsiLibrary.Win.FATabStripItem ui_tabCMS;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox ui_cmsSite;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox ui_cmsIP;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox ui_cmsPassword;
-        private System.Windows.Forms.TextBox ui_cmsUsername;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox ui_cmsSearchArticle;
         private System.Windows.Forms.Label label20;
@@ -1198,5 +1414,27 @@ namespace TTView
         private System.Windows.Forms.Button ui_btnCmsCategoryAdd;
         private System.Windows.Forms.Button ui_btnCmsCategoryMoveArticle;
         private System.Windows.Forms.Button ui_btnCmsOpen;
+        private FarsiLibrary.Win.FATabStripItem ui_tabCloud;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ComboBox ui_cmsIP;
+        private System.Windows.Forms.TextBox ui_cmsPassword;
+        private System.Windows.Forms.TextBox ui_cmsUsername;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Button button2;
+        private FarsiLibrary.Win.FATabStripItem ui_tabEnglish;
+        private FarsiLibrary.Win.FATabStripItem ui_tabYouTube;
     }
 }
